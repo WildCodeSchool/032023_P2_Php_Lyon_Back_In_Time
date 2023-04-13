@@ -4,9 +4,25 @@
     --main-font: 'Roboto', sans-serif;
     --main-color: #E5D6CD;
 }
+body {
+font-family: var(--main-font);
+}
 
 
 .welcome{
     background-color:var(--main-color)
+}
+
+#footer{
+    background-color:var(--main-color);
+}
+
+.logoFooter{
+    width: 24px;
+    height: 24px;
+}
+#logof{
+    width: 40px; 
+    height: 40px;
 }
 
