@@ -2,12 +2,13 @@
 
 :root {
     --main-font: 'Roboto', sans-serif;
-    --main-color: #e5d6cd;
+    --main-color: #E5D6CD;
 }
-
 body {
     font-family: var(--main-font);
 }
+
+/* navbar */
 
 .navbar {
     background-color: var(--main-color);
@@ -15,4 +16,20 @@ body {
 
 .navbar-brand>img {
     height: 60px;
+    font-family: var(--main-font);
+}
+
+/* footer */
+
+#footer{
+    background-color:var(--main-color);
+}
+
+.logoFooter{
+    width: 24px;
+    height: 24px;
+}
+#logof{
+    width: 40px; 
+    height: 40px;
 }
