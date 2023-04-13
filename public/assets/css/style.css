@@ -1,7 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap');
+
 :root {
-    --main: #e5d6cd;
+    --main-font: 'Roboto', sans-serif;
+    --main-color: #e5d6cd;
+}
+
+body {
+    font-family: var(--main-font);
 }
 
 .navbar {
-    background-color: var(--main);
+    background-color: var(--main-color);
+}
+
+.navbar-brand>img {
+    height: 60px;
 }
