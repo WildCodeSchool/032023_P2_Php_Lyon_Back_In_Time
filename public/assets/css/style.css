@@ -1,3 +1,7 @@
-body {
-    color: #f76c6c;
+:root {
+    --main: #e5d6cd;
+}
+
+.navbar {
+    background-color: var(--main);
 }
