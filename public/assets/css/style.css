@@ -11,3 +11,8 @@ font-family: var(--main-font);
 #footer{
     background-color:var(--main-color);
 }
+
+.logoFooter{
+    width: 24px;
+    height: 24px;
+}
