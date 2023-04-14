@@ -4,14 +4,34 @@
     --main-font: 'Roboto', sans-serif;
     --main-color: #E5D6CD;
 }
+
+
+
 body {
-font-family: var(--main-font);
+    font-family: var(--main-font);
 }
 
+/* navbar */
+
+.navbar {
+    background-color: var(--main-color);
+}
+
+#navbar-logo {
+    height: 50px;
+}
+
+#navbar-text {
+    height: 20px;
+}
+
+/* presentation */
 
 .welcome{
     background-color:var(--main-color)
 }
+
+/* footer */
 
 #footer{
     background-color:var(--main-color);
@@ -21,6 +41,7 @@ font-family: var(--main-font);
     width: 24px;
     height: 24px;
 }
+
 #logof{
     width: 40px; 
     height: 40px;
