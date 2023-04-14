@@ -14,10 +14,14 @@ body {
     background-color: var(--main-color);
 }
 
-.navbar-brand>img {
+#navbar-logo {
     height: 60px;
-    font-family: var(--main-font);
 }
+
+#navbar-text {
+    height: 30px;
+}
+
 
 /* footer */
 
