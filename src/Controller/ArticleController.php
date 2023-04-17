@@ -18,9 +18,9 @@ class ArticleController extends AbstractController
     }
 
         /**
-     * création premiere page!!!!
+     * new page creation exemple, to be used as an explanation.
      */
-    public function test(): string
+    public function newPage(): string
     {
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectAll('title');

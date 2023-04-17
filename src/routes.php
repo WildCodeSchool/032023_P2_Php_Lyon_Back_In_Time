@@ -16,7 +16,7 @@ return [
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
 
-    'test' => ['ArticleController', 'test',],
+    'newPage' => ['ArticleController', 'newPage',],
     'Accueil' => ['HomeController', 'index',],
     'articles/liste' => ['ArticleController', 'articleList',],
     'articles/show' => ['ArticleController', 'show', ['id']],
