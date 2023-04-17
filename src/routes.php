@@ -6,6 +6,8 @@
 //          2. method name
 //          3. (optional) array of query string keys to send as parameter to the method
 // e.g route '/item/edit?id=1' will execute $itemController->edit(1)
+
+// 'NOM DE PAGE DANS NAVIGATEUR => ['LE CONTROLLER', 'FONCTION A APPELER POUR AFFICHER PAGE',]
 return [
     '' => ['HomeController', 'index',],
     'items' => ['ItemController', 'index',],
@@ -13,4 +15,9 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
+
+    'test' => ['ArticleController', 'test',],
+    'Accueil' => ['HomeController', 'index',],
+    'articles/liste' => ['ArticleController', 'articleList',],
+    'articles/show' => ['ArticleController', 'show', ['id']],
 ];
