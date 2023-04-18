@@ -61,3 +61,16 @@ ALTER TABLE `item`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE article (
+id INT PRIMARY KEY AUTO_INCREMENT,
+title VARCHAR(100) NOT NULL,
+content VARCHAR(255) NOT NULL,
+category VARCHAR(100),
+writer VARCHAR(100)
+);
+
+INSERT INTO ARTICLE (title, content, category, writer) 
+VALUES
+('What is love?', 'Baby don\'t hurt me, don\'t hurt me no more!', 'lovesong', 'Ben'),
+('Kickstart my heart', 'bqzzrogumeqorhgmoeirhgmoiehrg', 'kickass-song', 'Not Ben');
