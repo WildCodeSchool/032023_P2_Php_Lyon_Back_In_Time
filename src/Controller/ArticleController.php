@@ -22,10 +22,7 @@ class ArticleController extends AbstractController
      */
     public function newPage(): string
     {
-        $articleManager = new ArticleManager();
-        $articles = $articleManager->selectAll('title');
-
-        return $this->twig->render('Article/test.html.twig', ['test' => $articles]);
+        return $this->twig->render('Article/examplepage.html.twig');
     }
 
     /**
