@@ -31,4 +31,16 @@ class ArticleManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    /**
+     * Get 3 rows from database by most recent date.
+     */
+    public function selectLastThreeArticles(): array
+    {
+        // prepared request
+        $query = "SELECT * FROM " . static::TABLE . " ORDER BY date DESC LIMIT 3;";
+        $statement = $this->pdo->query($query);
+
+        return $statement->fetchAll();
+    }
 }
