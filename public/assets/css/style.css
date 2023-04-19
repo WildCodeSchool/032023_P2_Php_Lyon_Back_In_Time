@@ -31,6 +31,14 @@ body {
     background-color:var(--main-color)
 }
 
+.card-body{
+    background-color: var(--main-color);
+}
+
+.mini-article{
+    height: 200px;
+}
+
 /* footer */
 
 #footer{
