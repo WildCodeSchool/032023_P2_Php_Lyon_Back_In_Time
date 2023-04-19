@@ -5,10 +5,12 @@
     --main-color: #E5D6CD;
 }
 
-
-
 body {
     font-family: var(--main-font);
+}
+
+.main-color {
+    color: var(--main-color);
 }
 
 /* navbar */
@@ -47,3 +49,13 @@ body {
     height: 40px;
 }
 
+/* article pages */
+
+#article-about-section {
+    background-color: var(--main-color);
+}
+ 
+/* to stick the right section off the article page */
+.position-sticky {
+    top: 2rem;
+}
