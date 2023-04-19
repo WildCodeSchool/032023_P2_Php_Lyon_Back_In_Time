@@ -17,7 +17,18 @@ class ArticleController extends AbstractController
         return $this->twig->render('Article/articlelist.html.twig', ['articles' => $articles]);
     }
 
-        /**
+    /**
+     * List 3 lastest articles
+     */
+    public function lastThreeArticle(): string
+    {
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->selectLastThreeArticles();
+
+        return $this->twig->render('Article/articlelist.html.twig', ['articles' => $articles]);
+    }
+
+    /**
      * new page creation exemple, to be used as an explanation.
      */
     public function newPage(): string
@@ -35,9 +46,6 @@ class ArticleController extends AbstractController
 
         return $this->twig->render('Article/show.html.twig', ['article' => $article]);
     }
-
-
-
 
     /**
      * Edit a specific item
