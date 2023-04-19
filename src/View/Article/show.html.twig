@@ -4,6 +4,9 @@
     <h1>{{ article.title }}</h1>
 
     <p>{{ article.content }}</p>
+    <img class="img-fluid w-75 p-3 mx-auto" src="{{ article.photo }}" alt="">
     <p>{{ article.category }}</p>
-    <p>{{ article.writer }}</p>
+    <p>{{ article.author }}</p>
+    <p>{{ article.date }}</p>
+
 {% endblock %}
