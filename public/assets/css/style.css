@@ -36,7 +36,7 @@ body {
 }
 
 #btn-home{
-    background-color: var(--second-color);
+    background-color: var(--secondary-color);
     color:white;
 }
 
