@@ -3,7 +3,7 @@
 :root {
     --main-font: 'Roboto', sans-serif;
     --main-color: #E5D6CD;
-    --button-color : #C9A48C;
+    --second-color : #C9A48C;
 }
 
 
@@ -38,12 +38,8 @@ body {
 }
 
 #btn-home{
-    background-color: var(--button-color);
+    background-color: var(--second-color);
     color:white;
-}
-
-.card-text{
-  
 }
 
 /* footer */
