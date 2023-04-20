@@ -19,4 +19,5 @@ return [
     'Accueil' => ['HomeController', 'index',],
     'articles/liste' => ['ArticleController', 'articleList',],
     'articles/show' => ['ArticleController', 'show', ['id']],
+    'articles/add' => ['ArticleController', 'add',],
 ];

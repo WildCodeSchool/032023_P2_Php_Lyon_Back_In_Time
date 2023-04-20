@@ -76,25 +76,22 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * Add a new item
+     * Add a new article
      */
-    public function add(): ?string
+    public function add(): string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $item = array_map('trim', $_POST);
+            $article = array_map('trim', $_POST);
 
-            // TODO validations (length, format...)
+            //TODO - Add some security controls
 
-            // if validation is ok, insert and redirection
-            $itemManager = new ArticleManager();
-            $id = $itemManager->insert($item);
+            $articleManager = new ArticleManager();
+            $articleManager->insert($article);
 
-            header('Location:/items/show?id=' . $id);
-            return null;
+            header('Location:/Accueil');
+            die();
         }
-
-        return $this->twig->render('Item/add.html.twig');
+        return $this->twig->render('Article/addArticle.html.twig');
     }
 
     /**
