@@ -8,14 +8,12 @@
     <div class="row g-5">
         <div class="col-md-9 ">
             <h2 class="my-4 text-center">{{ article.title }}</h2>
-
             <div class="px-3 py-1 mb-4">
+                <p>Date de publication : {{ article.date }}</p>
                 <p>{{ article.content }}</p>
                 <div class="text-center">
                     <img class="img-fluid w-75 p-3 mx-auto" src="{{ article.photo }}" alt="">
                 </div>
-                <p>Date de publication : {{ article.date }}</p>
-                <p>Catégorie : {{ article.category }}</p>
             </div>
 
         </div>
@@ -30,17 +28,6 @@
                         possimus iste eius sed laudantium cumque reiciendis dignissimos maxime, rem suscipit asperiores
                         architecto ratione.</p>
 
-                </div>
-
-                <div class="row">
-                    <div class="p-4 col-6 col-md-12 text-center text-md-left">
-                        <h4 class="fst-italic">Époques</h4>
-                        <ol class="list-unstyled mb-0 primary-link">
-                            <li><a href="#" class="link">Jurassique</a></li>
-                            <li><a href="#" class="link">Egypte Antique</a></li>
-                            <li><a href="#" class="link">Renaissance</a></li>
-                        </ol>
-                    </div>
                 </div>
             </div>
         </div>
