@@ -9,15 +9,21 @@ class ArticleManager extends AbstractManager
     public const TABLE = 'article';
 
     /**
-     * Insert new item in database
+     * Insert new article in database
      */
-    public function insert(array $item): int
+    public function insert(array $article): void
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`title`) VALUES (:title)");
-        $statement->bindValue('title', $item['title'], PDO::PARAM_STR);
+        $query = "INSERT INTO " . self::TABLE . " (title, content, photo, category, author, date)
+                VALUES (:title, :content, :photo, :category, :author, :date);";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':title', $article['title'], PDO::PARAM_STR);
+        $statement->bindValue(':content', $article['content'], PDO::PARAM_STR);
+        $statement->bindValue(':photo', $article['photo'], PDO::PARAM_STR);
+        $statement->bindValue(':category', $article['category'], PDO::PARAM_STR);
+        $statement->bindValue(':author', $article['author'], PDO::PARAM_STR);
+        $statement->bindValue(':date', $article['date'], PDO::PARAM_STR);
 
         $statement->execute();
-        return (int)$this->pdo->lastInsertId();
     }
 
     /**
