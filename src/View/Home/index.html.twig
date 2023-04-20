@@ -21,70 +21,45 @@
     <h3 class="text-start py-2">Latest Articles</h3>
   </div>
 
-  <div class="container latest-articles">
+  <div class="container latest-articles mb-5  ">
 
-    <div class="row row-cols-1 row-cols-md-3 g-4 mx-4">
-
+    <div class="row row-cols-1 row-cols-sm-2 justify-content-center   row-cols-xl-3 g-4 mx-4">
+      {% for article in articles %}
       <div class="col">
         <div class="card h-100 shadow-lg p-2">
-          <img src="https://picsum.photos/id/18/200/150" class="card-img-top" alt="...">
+          <img src="{{ article.photo }}" class="card-img-top h-50" alt="article-illustration">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text fs-6 fw-light">This is a wider card with supporting text below as a natural
-              lead-in to additional
-              content. This content is a little bit longer.</p>
+            <h5 class="card-title">{{ article.title }}</h5>
+            <p class="card-text fs-6 fw-light text-truncate">{{ article.content}} 
+          </p>
+             <h6 class="fst-italic fw-light">By {{ article.author }}</h6>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-sm mx-auto" id="btn-home">Read More</a>
+            <a href="/articles/show?id={{ article.id }}" class="btn btn-sm m-0" id="btn-home">Read More</a>
           </div>
         </div>
       </div>
-
-      <div class="col">
-        <div class="card h-100 shadow-lg p-2">
-          <img src="https://picsum.photos/id/74/200/150" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text fs-6 fw-light ">This card has supporting text below as a natural lead-in to additional
-              content.</p>
-          </div>
-          <div class="card-footer mx-auto">
-            <a href="#" class="btn btn-sm " id="btn-home">Read More</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card h-100 shadow-l p-2">
-          <img src="https://picsum.photos/id/507/200/150" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text fs-6 fw-light ">This is a wider card with supporting text below as a natural lead-in to
-              additional
-              content. This card has even longer content than the first to show that equal height action.</p>
-          </div>
-          <div class="card-footer w-100">
-            <a href="#" class="btn btn-sm  " id="btn-home">Read More</a>
-          </div>
-        </div>
-
-      </div>
-
+      {% else %}
+      <li>Nothing to display</li>
+      {% endfor %}
     </div>
-   
+
   </div>
+
 </div>
-   
+
+
 
 
 
 <h1>OUR LATEST ARTICLES</h1>
 <ul>
-    {% for article in articles %}
-        <li><a class="link-success" href="/articles/show?id={{ article.id }}">{{ article.title }}</a> written by {{ article.author }} on {{ article.date }}</li>
-    {% else %}
-        <li>Nothing to display</li>
-    {% endfor %}
+  {% for article in articles %}
+  <li><a class="link-success" href="/articles/show?id={{ article.id }}">{{ article.title }}</a> written by {{
+    article.author }} on {{ article.date }}</li>
+  {% else %}
+  <li>Nothing to display</li>
+  {% endfor %}
 </ul>
 
 <p>FIRST TEST PAGE <a href="/newPage">Here is a new page</a>.</p>
@@ -92,7 +67,3 @@
 <p>Find a complete CRUD example on <a href="/items">items</a> page.</p>
 
 {% endblock %}
-
-
-
-

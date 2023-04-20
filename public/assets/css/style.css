@@ -34,12 +34,16 @@ body {
 
 .card-body{
     background-color: var(--main-color);
+    
 }
 
 #btn-home{
     background-color: var(--button-color);
     color:white;
+}
 
+.card-text{
+  
 }
 
 /* footer */
