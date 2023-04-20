@@ -2,46 +2,43 @@
 
 {% block content %}
 
-<img src="https://picsum.photos/1600/400" class="img-fluid mx-auto d-block" alt="dolorean">
+<img src="/assets/images/dolorean.jpg" class="img-fluid mx-auto d-block" alt="dolorean">
 
 <div class="container">
     <div class="row g-5">
-        <div class="col-md-8 ">
+        <div class="col-md-9 ">
             <h2 class="my-4 text-center">{{ article.title }}</h2>
 
-            <div class="card border-dark px-3 py-1 mb-4">
+            <div class="px-3 py-1 mb-4">
                 <p>{{ article.content }}</p>
-                <img class="img-fluid w-75 p-3 mx-auto" src="{{ article.photo }}" alt="">
-                <p>{{ article.category }}</p>
-                <p>{{ article.author }}</p>
-                <p>{{ article.date }}</p>
+                <div class="text-center">
+                    <img class="img-fluid w-75 p-3 mx-auto" src="{{ article.photo }}" alt="">
+                </div>
+                <p>Date de publication : {{ article.date }}</p>
+                <p>Catégorie : {{ article.category }}</p>
             </div>
+
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="position-sticky">
-                <div class="p-4 my-3 rounded col" id="article-about-section">
-                    <h4 class="fst-italic">About</h4>
-                    <p class="mb-0">Customize this section to tell your visitors a little bit about your
-                        publication, writers, content, or something else entirely. Totally up to you.</p>
+                <div class="p-4 my-4 rounded col" id="article-about-section">
+                    <h4 class="fst-italic">A propos de l'auteur</h4>
+                    <h5 class="pb-2">Auteur : {{ article.author }}</h5>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At quibusdam enim magnam placeat odit
+                        non excepturi debitis temporibus rerum ut. Sit nemo minima voluptates soluta perspiciatis
+                        possimus iste eius sed laudantium cumque reiciendis dignissimos maxime, rem suscipit asperiores
+                        architecto ratione.</p>
+
                 </div>
 
-                <div class="row justify-content-center">
-                    <div class="p-4 col-6 col-md-12">
+                <div class="row">
+                    <div class="p-4 col-6 col-md-12 text-center text-md-left">
                         <h4 class="fst-italic">Époques</h4>
-                        <ol class="list-unstyled mb-0">
-                            <li><a href="#" class="link-primary">Jurassique</a></li>
-                            <li><a href="#" class="link-primary">Egypte Antique</a></li>
-                            <li><a href="#" class="link-primary">Renaissance</a></li>
-                        </ol>
-                    </div>
-
-                    <div class="p-4 col-6 col-md-12">
-                        <h4 class="fst-italic">Other Thing</h4>
-                        <ol class="list-unstyled">
-                            <li><a href="#" class="link-primary">GitHub</a></li>
-                            <li><a href="#" class="link-primary">Twitter</a></li>
-                            <li><a href="#" class="link-primary">Facebook</a></li>
+                        <ol class="list-unstyled mb-0 primary-link">
+                            <li><a href="#" class="link">Jurassique</a></li>
+                            <li><a href="#" class="link">Egypte Antique</a></li>
+                            <li><a href="#" class="link">Renaissance</a></li>
                         </ol>
                     </div>
                 </div>

@@ -3,14 +3,11 @@
 :root {
     --main-font: 'Roboto', sans-serif;
     --main-color: #E5D6CD;
+    --secondary-color : #C9A48C;
 }
 
 body {
     font-family: var(--main-font);
-}
-
-.main-color {
-    color: var(--main-color);
 }
 
 /* navbar */
@@ -53,6 +50,14 @@ body {
 
 #article-about-section {
     background-color: var(--main-color);
+}
+
+#article-about-section p {
+    margin: 0rem;
+}
+
+.primary-link a {
+    color: var(--secondary-color);
 }
  
 /* to stick the right section off the article page */
