@@ -30,6 +30,16 @@ body {
     background-color:var(--main-color)
 }
 
+.card-body{
+    background-color: var(--main-color);
+    
+}
+
+#btn-home{
+    background-color: var(--secondary-color);
+    color:white;
+}
+
 /* footer */
 
 #footer{
