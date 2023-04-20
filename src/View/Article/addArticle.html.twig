@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="container w-50 bg-primary">
+    <form method="post">
+        <p>
+            <label for="title" class="form-label font-weight-bold">Title :</label>
+            <input type="text" name="title" id="title" class="form-control">
+        </p>
+
+        <p>
+            <label for="content" class="form-label font-weight-bold">Article :</label>
+            <textarea type="text" name="content" id="content" class="form-control" cols="30" rows="10"></textarea>
+        </p>
+
+        <p>
+            <label for="photo" class="form-label font-weight-bold">Photo link :</label>
+            <input type="url" name="photo" id="photo" class="form-control">
+        </p>
+
+        <p>
+            <label for="category" class="form-label font-weight-bold">Category :</label>
+            <select name="category" id="category">
+                <option>Prehistoric</option>
+                <option>Egypt</option>
+                <option>Renaissance</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="author" class="form-label font-weight-bold">Author Name :</label>
+            <input type="text" name="author" id="author" class="form-control">
+        </p>
+
+        <p>
+            <label for="date" class="form-label ">Date of the day :</label>
+            <input type="date" name="date" id="date" class="form-control">
+        </p>
+
+        <p>
+            <input type="submit" value="Publish" class="form-control">
+        </p>
+    </form>
+</div>    
+{% endblock %}
