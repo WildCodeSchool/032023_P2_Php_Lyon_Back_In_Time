@@ -1,44 +1,44 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<div class="container w-50 bg-primary">
+<div class="container w-50 bg-secondary p-2">
     <form method="post">
         <p>
-            <label for="title" class="form-label font-weight-bold">Title :</label>
+            <label for="title" class="form-label font-weight-bold">Titre :</label>
             <input type="text" name="title" id="title" class="form-control">
         </p>
 
         <p>
-            <label for="content" class="form-label font-weight-bold">Article :</label>
+            <label for="content" class="form-label font-weight-bold">Contenu :</label>
             <textarea type="text" name="content" id="content" class="form-control" cols="30" rows="10"></textarea>
         </p>
 
         <p>
-            <label for="photo" class="form-label font-weight-bold">Photo link :</label>
+            <label for="photo" class="form-label font-weight-bold">Lien photo :</label>
             <input type="url" name="photo" id="photo" class="form-control">
         </p>
 
         <p>
-            <label for="category" class="form-label font-weight-bold">Category :</label>
+            <label for="category" class="form-label font-weight-bold">Categorie :</label>
             <select name="category" id="category">
-                <option>Prehistoric</option>
-                <option>Egypt</option>
+                <option>Jurassique</option>
+                <option>Egypte Antique</option>
                 <option>Renaissance</option>
             </select>
         </p>
 
         <p>
-            <label for="author" class="form-label font-weight-bold">Author Name :</label>
+            <label for="author" class="form-label font-weight-bold">Nom d'auteur :</label>
             <input type="text" name="author" id="author" class="form-control">
         </p>
 
         <p>
-            <label for="date" class="form-label ">Date of the day :</label>
+            <label for="date" class="form-label ">Date du jour :</label>
             <input type="date" name="date" id="date" class="form-control">
         </p>
 
         <p>
-            <input type="submit" value="Publish" class="form-control">
+            <input type="submit" value="Publier" class="form-control">
         </p>
     </form>
 </div>    
