@@ -2,12 +2,29 @@
 
 
 {% block content %}
-    <h1>Nos articles</h1>
-    <ul>
-        {% for article in articles %}
-            <li><a href="/articles/show?id={{ article.id }}">{{ article.title }}</a> written by {{ article.author }} on {{ article.date }}</li>
-        {% else %}
-            <li>Nothing to display</li>
-        {% endfor %}
-    </ul>
+<div class="container latest-articles mb-5  ">
+
+    <div class="row row-cols-1 row-cols-md-2 justify-content-center   row-cols-xl-3 g-4 mx-4">
+      {% for article in articles %}
+      <div class="col">
+        <div class="card h-100 shadow-lg p-2">
+          <img src="{{ article.photo }}" class="card-img-top h-50" alt="article-illustration">
+          <div class="card-body">
+            <h5 class="card-title">{{ article.title }}</h5>
+            <p class="card-text fs-6 fw-light text-truncate">{{ article.content}} 
+          </p>
+             <h6 class="fst-italic fw-light">By {{ article.author }}</h6>
+          </div>
+          <div class="card-footer">
+            <a href="/articles/show?id={{ article.id }}" class="btn btn-sm m-0" id="btn-home">Read More</a>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <li>Nothing to display</li>
+      {% endfor %}
+    </div>
+
+  </div>
+
 {% endblock %}
