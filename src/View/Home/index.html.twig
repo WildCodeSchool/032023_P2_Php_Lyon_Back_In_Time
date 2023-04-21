@@ -33,7 +33,7 @@
             <h5 class="card-title">{{ article.title }}</h5>
             <p class="card-text fs-6 fw-light text-truncate">{{ article.content}} 
           </p>
-             <h6 class="fst-italic fw-light">By {{ article.author }}</h6>
+             <h6 class="fst-italic fw-light">Par {{ article.author }}</h6>
           </div>
           <div class="card-footer">
             <a href="/articles/show?id={{ article.id }}" class="btn btn-sm m-0" id="btn-home">Voir plus</a>
@@ -41,7 +41,7 @@
         </div>
       </div>
       {% else %}
-      <ul><li>Nothing to display</li></ul>
+      <ul><li>Rien à afficher</li></ul>
       {% endfor %}
     </div>
 
