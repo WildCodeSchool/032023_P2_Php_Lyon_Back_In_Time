@@ -1,7 +1,14 @@
 {% extends 'layout.html.twig' %}
 
-{% block content %}
+{% block content %}    
 <div class="container w-50 bg-secondary p-2">
+    
+    <ul class="bg-danger">
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+
     <form method="post">
         <p>
             <label for="title" class="form-label font-weight-bold">Titre :</label>
@@ -34,7 +41,7 @@
 
         <p>
             <label for="date" class="form-label ">Date du jour :</label>
-            <input type="date" name="date" id="date" class="form-control">
+            <input type="date" name="date" id="date" class="form-control" required>
         </p>
 
         <p>

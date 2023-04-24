@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\Controller\ArticleService;
 
 class ArticleController extends AbstractController
 {
@@ -80,18 +81,22 @@ class ArticleController extends AbstractController
      */
     public function add(): string
     {
+        $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $article = array_map('trim', $_POST);
 
-            //TODO - Add some security controls
+            $articleService = new ArticleService();
+            $errors = $articleService->formFilterErrors($article);
 
-            $articleManager = new ArticleManager();
-            $articleManager->insert($article);
+            if (empty($errors)) {
+                $articleManager = new ArticleManager();
+                $articleManager->insert($article);
 
-            header('Location:/Accueil');
-            die();
+                header('Location:/Accueil');
+                die();
+            }
         }
-        return $this->twig->render('Article/addArticle.html.twig');
+        return $this->twig->render('Article/addArticle.html.twig', array('errors' => $errors));
     }
 
     /**
