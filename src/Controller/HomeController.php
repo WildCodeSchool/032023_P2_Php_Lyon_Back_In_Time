@@ -14,6 +14,12 @@ class HomeController extends AbstractController
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectLastThreeArticles();
 
+        if (isset($_SESSION['admin']) === true) {
+            echo "you are admin";
+        } else {
+            echo "you are not admin";
+        }
+
         return $this->twig->render('Home/index.html.twig', ['articles' => $articles]);
     }
 }
