@@ -1,9 +1,6 @@
 <?php
 
-namespace App\Controller;
-
-use App\Model\ArticleManager;
-use App\Controller\ArticleController;
+namespace App\Service;
 
 class ArticleService
 {

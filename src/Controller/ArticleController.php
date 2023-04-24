@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
-use App\Controller\ArticleService;
+use App\Service\ArticleService;
 
 class ArticleController extends AbstractController
 {
