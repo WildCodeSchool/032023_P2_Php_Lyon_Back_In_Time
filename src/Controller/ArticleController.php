@@ -86,7 +86,9 @@ class ArticleController extends AbstractController
             $article = array_map('trim', $_POST);
 
             $articleService = new ArticleService();
-            $errors = $articleService->formFilterErrors($article);
+            $articleService->formFilterErrors($article);
+            $articleService->secondFormFilterErrors($article);
+            $errors = $articleService->errors;
 
             if (empty($errors)) {
                 $articleManager = new ArticleManager();
