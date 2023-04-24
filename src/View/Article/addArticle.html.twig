@@ -12,22 +12,22 @@
     <form method="post">
         <p>
             <label for="title" class="form-label font-weight-bold">Titre :</label>
-            <input type="text" name="title" id="title" class="form-control">
+            <input type="text" name="title" id="title" class="form-control" required>
         </p>
 
         <p>
             <label for="content" class="form-label font-weight-bold">Contenu :</label>
-            <textarea type="text" name="content" id="content" class="form-control" cols="30" rows="10"></textarea>
+            <textarea type="text" name="content" id="content" class="form-control" cols="30" rows="10" required></textarea>
         </p>
 
         <p>
             <label for="photo" class="form-label font-weight-bold">Lien photo :</label>
-            <input type="url" name="photo" id="photo" class="form-control">
+            <input type="url" name="photo" id="photo" class="form-control" required>
         </p>
 
         <p>
             <label for="category" class="form-label font-weight-bold">Catégorie :</label>
-            <select name="category" id="category">
+            <select name="category" id="category" required>
                 <option>Jurassique</option>
                 <option>Egypte Antique</option>
                 <option>Renaissance</option>
@@ -36,7 +36,7 @@
 
         <p>
             <label for="author" class="form-label font-weight-bold">Nom d'auteur :</label>
-            <input type="text" name="author" id="author" class="form-control">
+            <input type="text" name="author" id="author" class="form-control" required>
         </p>
 
         <p>
