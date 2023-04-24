@@ -32,7 +32,7 @@ class ArticleService
     }
 
         /**
-     * Second filters the article form and return errors
+     * Second function to filter the article form and return errors
      */
     public function secondFormFilterErrors($article): void
     {
