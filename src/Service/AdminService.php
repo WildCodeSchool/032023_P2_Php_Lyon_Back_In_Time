@@ -6,7 +6,6 @@ use App\Model\AdminManager;
 
 class AdminService
 {
-
     public array $errors;
 
     public function __construct()

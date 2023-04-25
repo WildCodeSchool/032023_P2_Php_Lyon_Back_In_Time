@@ -17,8 +17,8 @@ class AdminController extends AbstractController
             $adminService->issetAndNotEmpty($data);
             $adminService->loginVerification($data);
 
-            return $this->twig->render('Admin/connexionAdmin.html.twig', ['errors' => $adminService->errors],);
+            return $this->twig->render('Admin/connexionAdmin.html.twig', ['errors' => $adminService->errors]);
         }
-        return $this->twig->render('Admin/connexionAdmin.html.twig',);
+        return $this->twig->render('Admin/connexionAdmin.html.twig');
     }
 }
