@@ -18,6 +18,19 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Renaissance</a>
                 </li>
+                {% if session.admin is same as true %}
+                <li>
+                    <a class="nav-link active" href="/articles/add">Créer Un Article</a>
+
+                </li>
+                <li>
+                    <form action="" method="get">
+                        <button class="log-out-button" type="submit" name="logOut">
+                            Log Out
+                        </button>
+                    </form>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>

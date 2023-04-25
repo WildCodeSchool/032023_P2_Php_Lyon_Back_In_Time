@@ -24,6 +24,13 @@ body {
     height: 20px;
 }
 
+.log-out-button {
+    font-size: 100%;
+    border: 0;
+    padding: 0;
+    background-color: var(--main-color);
+}
+
 /* presentation */
 
 .welcome{

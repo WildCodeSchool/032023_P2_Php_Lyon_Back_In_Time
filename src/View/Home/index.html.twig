@@ -51,19 +51,8 @@
 
 </div>
 
-
-
-
-
 <p>Tous nos des articles: <a href="/articles/liste">Par ici</a></p>
-{% if session.admin is same as true %}
-<p>Page rédaction: <a href="/articles/add">Par ici</a></p>
-{% endif %}
-{% if session.admin is same as true %}
-<form method="get">
-  <input type="submit" name="logOut" value="LogOut">
-</form>
-{% else %}
+{% if session.admin is same as false %}
 <p>Connection Admin <a href="/admin/connection">Par ici</a></p>
 {% endif %}
 <p>PAGE TEST<a href="/newPage">page test</a></p>
