@@ -12,7 +12,7 @@ use Twig\Loader\FilesystemLoader;
 abstract class AbstractController
 {
     protected Environment $twig;
-
+    public bool $admin = false;
 
     public function __construct()
     {
@@ -25,5 +25,6 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
+        $this->twig->addGlobal('session', $_SESSION);
     }
 }

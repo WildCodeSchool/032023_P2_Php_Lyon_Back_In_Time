@@ -31,9 +31,9 @@
           <img src="{{ article.photo }}" class="card-img-top h-50" alt="article-illustration">
           <div class="card-body">
             <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text fs-6 fw-light text-truncate">{{ article.content}} 
-          </p>
-             <h6 class="fst-italic fw-light">Par {{ article.author }}</h6>
+            <p class="card-text fs-6 fw-light text-truncate">{{ article.content}}
+            </p>
+            <h6 class="fst-italic fw-light">Par {{ article.author }}</h6>
           </div>
           <div class="card-footer">
             <a href="/articles/show?id={{ article.id }}" class="btn btn-sm m-0" id="btn-home">Voir plus</a>
@@ -41,7 +41,9 @@
         </div>
       </div>
       {% else %}
-      <ul><li>Rien à afficher</li></ul>
+      <ul>
+        <li>Rien à afficher</li>
+      </ul>
       {% endfor %}
     </div>
 
@@ -54,9 +56,16 @@
 
 
 <p>Tous nos des articles: <a href="/articles/liste">Par ici</a></p>
+{% if session.admin is same as true %}
 <p>Page rédaction: <a href="/articles/add">Par ici</a></p>
-
-
-<p>PAGE TEST<a href="/newPage">page test</a>.</p> 
+{% endif %}
+{% if session.admin is same as true %}
+<form method="get">
+  <input type="submit" name="logOut" value="LogOut">
+</form>
+{% else %}
+<p>Connection Admin <a href="/admin/connection">Par ici</a></p>
+{% endif %}
+<p>PAGE TEST<a href="/newPage">page test</a></p>
 <p>CRUB<a href="/items">items</a> page.</p>
 {% endblock %}
