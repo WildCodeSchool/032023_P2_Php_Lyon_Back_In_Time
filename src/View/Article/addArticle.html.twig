@@ -1,14 +1,19 @@
 {% extends 'layout.html.twig' %}
 
 
-{% block content %}
-
+{% block content %}    
 <div class="container w-50 bg-secondary p-2">
+    
+    <ul class="bg-danger">
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
 
     <form method="post">
         <p>
             <label for="title" class="form-label font-weight-bold">Titre :</label>
-            <input type="text" name="title" id="title" class="form-control">
+            <input type="text" name="title" id="title" class="form-control" required>
         </p>
 
         <p>
@@ -18,12 +23,12 @@
        
         <p>
             <label for="photo" class="form-label font-weight-bold">Lien photo :</label>
-            <input type="url" name="photo" id="photo" class="form-control">
+            <input type="url" name="photo" id="photo" class="form-control" required>
         </p>
 
         <p>
             <label for="category" class="form-label font-weight-bold">Catégorie :</label>
-            <select name="category" id="category">
+            <select name="category" id="category" required>
                 <option>Jurassique</option>
                 <option>Egypte Antique</option>
                 <option>Renaissance</option>
@@ -32,12 +37,12 @@
 
         <p>
             <label for="author" class="form-label font-weight-bold">Nom d'auteur :</label>
-            <input type="text" name="author" id="author" class="form-control">
+            <input type="text" name="author" id="author" class="form-control" required>
         </p>
 
         <p>
             <label for="date" class="form-label ">Date du jour :</label>
-            <input type="date" name="date" id="date" class="form-control">
+            <input type="date" name="date" id="date" class="form-control" required>
         </p>
 
         <p>
