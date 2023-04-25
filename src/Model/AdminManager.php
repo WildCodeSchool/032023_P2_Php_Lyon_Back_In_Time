@@ -6,5 +6,5 @@ use PDO;
 
 class AdminManager extends AbstractManager
 {
-    public const TABLE = 'Admin';
+    public const TABLE = 'admin';
 }
