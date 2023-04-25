@@ -102,8 +102,8 @@ class ArticleController extends AbstractController
         if ($_SESSION['admin'] === true) {
             return $this->twig->render('Article/addArticle.html.twig');
         } else {
-            header("location: /admin/connection");
-            return "errors";
+            header("location: /");
+            die();
         }
     }
 
