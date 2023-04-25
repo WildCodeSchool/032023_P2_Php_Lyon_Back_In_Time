@@ -10,7 +10,7 @@
             <h2 class="my-4 text-center">{{ article.title }}</h2>
             <div class="px-3 py-1 mb-4">
                 <p>Date de publication : {{ article.date|date("d/m/Y") }}</p>
-                <p>{{ article.content }}</p>
+                <p>{% autoescape %}{{ article.content|raw }} {% endautoescape %}</p>
                 <div class="text-center">
                     <img class="img-fluid w-75 p-3 mx-auto" src="{{ article.photo }}" alt="">
                 </div>

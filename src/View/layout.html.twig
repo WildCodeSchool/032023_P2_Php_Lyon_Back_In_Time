@@ -15,6 +15,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     {% block stylesheet %}{% endblock %}
+    <script src="/assets/tinymce/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea',
+            language: 'fr_FR',
+            plugins : 'image',
+            toolbar : 'fontfamily fontsize forecolor backcolor aligncenter alignjustify image',
+            statusbar: false,
+        });
+    </script>
 </head>
 
 <body>

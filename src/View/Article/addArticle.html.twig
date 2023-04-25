@@ -1,7 +1,10 @@
 {% extends 'layout.html.twig' %}
 
+
 {% block content %}
+
 <div class="container w-50 bg-secondary p-2">
+
     <form method="post">
         <p>
             <label for="title" class="form-label font-weight-bold">Titre :</label>
@@ -10,9 +13,9 @@
 
         <p>
             <label for="content" class="form-label font-weight-bold">Contenu :</label>
-            <textarea type="text" name="content" id="content" class="form-control" cols="30" rows="10"></textarea>
+            <textarea type="text" name="content" id="mytextarea" class="form-control" ></textarea>
         </p>
-
+       
         <p>
             <label for="photo" class="form-label font-weight-bold">Lien photo :</label>
             <input type="url" name="photo" id="photo" class="form-control">
