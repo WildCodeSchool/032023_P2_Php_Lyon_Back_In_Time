@@ -40,6 +40,13 @@ body {
     color:white;
 }
 
+
+/* new article form */
+
+.article-form{
+    background-color: var(--main-color);
+}
+
 /* footer */
 
 #footer{
