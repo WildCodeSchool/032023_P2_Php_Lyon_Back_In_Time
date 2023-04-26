@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<div class="container w-50 bg-secondary p-2">
+    {% for error in errors %}
+    <ul>
+        <li> {{ error }} </li>
+    </ul>
+    {% endfor %}
+    <form action="" method="post" name="login">
+        <p>
+            <label for="username" class="form-label font-weight-bold">Nom admin :</label>
+            <input type="text" name="username" id="username" class="form-control">
+        </p>
+
+        <p>
+            <label for="password" class="form-label font-weight-bold">Mots de passe admin :</label>
+            <input type="password" name="password" id="password" class="form-control">
+        </p>
+        <p>
+            <input type="submit" name="connect" value="Se connecter" class="form-control">
+        </p>
+    </form>
+</div>
+{% endblock content %}

@@ -98,7 +98,13 @@ class ArticleController extends AbstractController
                 die();
             }
         }
-        return $this->twig->render('Article/addArticle.html.twig', array('errors' => $errors));
+
+        if ($_SESSION['admin'] === true) {
+            return $this->twig->render('Article/addArticle.html.twig');
+        } else {
+            header("location: /");
+            die();
+        }
     }
 
     /**
