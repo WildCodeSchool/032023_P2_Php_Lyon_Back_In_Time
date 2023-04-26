@@ -49,4 +49,16 @@ class ArticleManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    /**
+     * Get the title and the id value of every article.
+     */
+    public function getAllTitle(): array
+    {
+        // prepared request
+        $query = "SELECT id, title FROM " . static::TABLE . ";";
+        $statement = $this->pdo->query($query);
+
+        return $statement->fetchAll();
+    }
 }

@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}    
+<H1>Hello there</H1>
+<div class="container w-50 bg-secondary p-2">
+    <form action="#"method="post">
+
+        <p>
+            <label for="article" class="form-label font-weight-bold">Article à sélectionner :</label>
+            <select name="article_id" id="article_id" required>
+                {% for title in titles %}
+                <option value="{{ title.id }}">{{ title.title }}</option>
+                {% endfor %}
+            </select>
+        </p>
+
+        <p>
+            <label for="url" class="form-label font-weight-bold">Lien photo :</label>
+            <input type="url" name="url" id="url" class="form-control" required>
+        </p>
+
+        <p>
+            <input type="submit" href="" value="Ajouter à la galerie photo" class="form-control">
+        </p>
+    </form>
+</div>    
+{% endblock %}

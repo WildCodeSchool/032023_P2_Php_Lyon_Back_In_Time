@@ -20,4 +20,5 @@ return [
     'articles/liste' => ['ArticleController', 'articleList',],
     'articles/show' => ['ArticleController', 'show', ['id']],
     'articles/add' => ['ArticleController', 'add',],
+    'articles/galerie' => ['ArticleController', 'createPhotoGallery',],
 ];

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\Model\PictureManager;
 use App\Service\ArticleService;
 
 class ArticleController extends AbstractController
@@ -45,7 +46,16 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $article = $articleManager->selectOneById($id);
 
-        return $this->twig->render('Article/show.html.twig', ['article' => $article]);
+        $pictureManager = new PictureManager();
+        $pictures = $pictureManager->selectPictureByArticleId($id);
+
+
+       //var_dump($pictures);die();
+
+        return $this->twig->render('Article/show.html.twig', [
+            'article' => $article,
+            'pictures' => $pictures
+        ]);
     }
 
     /**
@@ -113,5 +123,28 @@ class ArticleController extends AbstractController
 
             header('Location:/items');
         }
+    }
+
+        /**
+     * comment later.
+     */
+    public function createPhotoGallery(): string
+    {
+        $articleManager = new ArticleManager();
+        $titles = $articleManager->getAllTitle();
+
+        //$errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $picture = array_map('trim', $_POST);
+
+            $pictureManager = new PictureManager();
+            $pictureManager->insert($picture);
+
+            header('Location:/Accueil');
+            die();
+        }
+
+
+        return $this->twig->render('Article/addGallery.html.twig', ['titles' => $titles]);
     }
 }
