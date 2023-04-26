@@ -16,17 +16,7 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     {% block stylesheet %}{% endblock %}
     <script src="/assets/tinymce/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector: '#mytextarea',
-            language: 'fr_FR',
-            plugins : 'image',
-            menubar: 'file insert',
-            removed_menuitems: 'newdocument',
-            toolbar : 'fontfamily fontsize bold italic underline forecolor backcolor indent outdent lineheight  alignleft aligncenter alignright alignjustify undo redo cuts',
-            statusbar: false,
-        });
-    </script>
+    <script src="/assets/script.js"></script>
 </head>
 
 <body>
