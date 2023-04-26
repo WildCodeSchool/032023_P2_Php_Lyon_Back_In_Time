@@ -1,7 +1,11 @@
 {% extends 'layout.html.twig' %}
 
+
 {% block content %}    
-<div class="container w-50 bg-secondary p-2">
+
+<img src="\assets\images\redaction.jpg" class="img-fluid mx-auto d-block" alt="redaction">
+
+<div class="container  w-75 p-2 my-5 shadow-lg rounded-2">
     
     <ul class="bg-danger">
         {% for error in errors %}
@@ -9,24 +13,30 @@
         {% endfor %}
     </ul>
 
-    <form method="post">
-        <p>
+    <form method="post" class="article-form" >
+        
+        <p class="p-2">
             <label for="title" class="form-label font-weight-bold">Titre :</label>
-            <input type="text" name="title" id="title" class="form-control" required>
+            <input type="text" name="title" id="title" class="form-control p-2" maxlength="29" required>
         </p>
 
-        <p>
+        <p class="p-2">
+            <label for="title" class="form-label font-weight-bold">Accroche :</label>
+            <input type="text" name="extract" id="extract" class="form-control p-2" maxlength="58" required>
+        </p>
+
+        <p class="p-2">
             <label for="content" class="form-label font-weight-bold">Contenu :</label>
-            <textarea type="text" name="content" id="content" class="form-control" cols="30" rows="10" required></textarea>
+            <textarea type="text" name="content" id="mytextarea" class="form-control" ></textarea>
         </p>
-
-        <p>
+       
+        <p class="p-2">
             <label for="photo" class="form-label font-weight-bold">Lien photo :</label>
             <input type="url" name="photo" id="photo" class="form-control" required>
         </p>
 
-        <p>
-            <label for="category" class="form-label font-weight-bold">Catégorie :</label>
+        <p class="p-2">
+            <label for="category" class="form-label font-weight-bold">Epoque :</label>
             <select name="category" id="category" required>
                 <option>Jurassique</option>
                 <option>Egypte Antique</option>
@@ -34,17 +44,17 @@
             </select>
         </p>
 
-        <p>
-            <label for="author" class="form-label font-weight-bold">Nom d'auteur :</label>
+        <p class="p-2">
+            <label for="author" class="form-label font-weight-bold">Nom de l'auteur :</label>
             <input type="text" name="author" id="author" class="form-control" required>
         </p>
 
-        <p>
+        <p class="p-2">
             <label for="date" class="form-label ">Date du jour :</label>
             <input type="date" name="date" id="date" class="form-control" required>
         </p>
 
-        <p>
+        <p class="p-2">
             <input type="submit" value="Publier" class="form-control">
         </p>
     </form>
