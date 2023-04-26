@@ -14,13 +14,6 @@ class HomeController extends AbstractController
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectLastThreeArticles();
 
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            if (isset($_GET['logOut'])) {
-                $_SESSION['admin'] = false;
-                header("location: /");
-            }
-        }
-
         return $this->twig->render('Home/index.html.twig', ['articles' => $articles]);
     }
 }

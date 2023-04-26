@@ -107,4 +107,4 @@ CREATE TABLE `admin` (
 );
 
 INSERT INTO `admin` (`username`, `type`, `password`) VALUES
-('Admin2023', 'admin', 'Password123');
+('Admin2023', 'admin', '$2y$10$xQMlJsK6av7/J5KXFxp6KOb6lPxrbAhARIWmJQ8tCW2XWExF4rbJe');
