@@ -16,6 +16,8 @@
                 </div>
             </div>
 
+
+
         </div>
 
         <div class="col-md-3">
@@ -34,7 +36,7 @@
     </div>
 
 
-    <div id="carousel" class="carousel slide img-fluid w-50 p-3 mx-auto ">
+    <div id="carousel" class="carousel slide img-fluid w-75 p-3 mx-auto shadow-lg">
       <div class="carousel-inner">
         {% for picture in pictures %}
         <div class="carousel-item active">
@@ -53,6 +55,17 @@
     </div>
 </div>
 
-
+<div class="container">
+  <div class="row text-center text-lg-start">
+  
+    {% for picture in pictures %}
+    <div class="col-lg-3 col-md-4 col-6">
+      <a href="{{ picture.url }}" data-toggle="lightbox" data-gallery="example-gallery" class="text-center d-block mb-4 h-100 ">
+      <img id="galleryP"src="{{ picture.url }}" class="img-fluid shadow-lg" alt="...">
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 
 {% endblock %}
