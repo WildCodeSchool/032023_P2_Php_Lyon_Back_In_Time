@@ -21,4 +21,5 @@ return [
     'articles/show' => ['ArticleController', 'show', ['id']],
     'articles/add' => ['ArticleController', 'add',],
     'admin/connection' => ['AdminController', 'connexion',],
+    'articles/galerie' => ['ArticleController', 'createPhotoGallery',],
 ];

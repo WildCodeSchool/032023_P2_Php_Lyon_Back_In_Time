@@ -48,13 +48,6 @@ body {
     color:white;
 }
 
-
-/* new article form */
-
-.article-form{
-    background-color: var(--main-color);
-}
-
 /* footer */
 
 #footer{
@@ -90,16 +83,12 @@ body {
     top: 2rem;
 }
 
-/* Connection Pages */
-
-.connexion-form{
-    background-color: var(--main-color);
-}
-
-#connexion-container {
-    margin-bottom: 30px;
-}
+/* style for every form */
 
 .submit-button {
     width: 20vw;
+}
+
+form {
+    background-color: var(--main-color);
 }
