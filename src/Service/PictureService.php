@@ -15,8 +15,12 @@ class PictureService
      */
     public function pictureFormFilter($picture): void
     {
-        if (filter_var($picture['url'], FILTER_VALIDATE_URL) === false) {
-            $this->errors[] = "Le lien de la photo n'est pas valide";
+        $picturesUrl = explode("\n", $picture['url']);
+        foreach ($picturesUrl as $url) {
+            $url = trim($url); // remove whitespace
+            if (filter_var($url, FILTER_VALIDATE_URL) === false) {
+                $this->errors[] = "Le lien de la photo n'est pas valide";
+            }
         }
     }
 }
