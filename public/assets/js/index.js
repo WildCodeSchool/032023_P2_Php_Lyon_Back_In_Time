@@ -7,9 +7,6 @@ function showSlider() {
 	// Show the slider container
 	sliderContainer.style.display = 'block';
 	
-	// Show the first image
-	//images[activeIndex].classList.add('active');
-	
 	// Move to the next image on click
 	sliderContainer.addEventListener('click', function() {
 	  images[activeIndex].classList.remove('active');
