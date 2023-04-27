@@ -51,8 +51,6 @@ class ArticleController extends AbstractController
         $pictures = $pictureManager->selectPictureByArticleId($id);
 
 
-       //var_dump($pictures);die();
-
         return $this->twig->render('Article/show.html.twig', [
             'article' => $article,
             'pictures' => $pictures
