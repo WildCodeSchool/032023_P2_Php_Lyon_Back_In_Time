@@ -13,7 +13,7 @@ class ArticleManager extends AbstractManager
      */
     public function insert(array $article): void
     {
-        $query = "INSERT INTO " . self::TABLE . " (title,extract,content, photo, category, author, date)
+        $query = "INSERT INTO " . self::TABLE . " (title, extract, content, photo, category, author, date)
                 VALUES (:title, :extract, :content, :photo, :category, :author, :date);";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':title', $article['title'], PDO::PARAM_STR);
@@ -46,6 +46,18 @@ class ArticleManager extends AbstractManager
     {
         // prepared request
         $query = "SELECT * FROM " . static::TABLE . " ORDER BY date DESC LIMIT 3;";
+        $statement = $this->pdo->query($query);
+
+        return $statement->fetchAll();
+    }
+
+    /**
+     * Get the title and the id value of every article.
+     */
+    public function getAllTitles(): array
+    {
+        // prepared request
+        $query = "SELECT id, title FROM " . static::TABLE . ";";
         $statement = $this->pdo->query($query);
 
         return $statement->fetchAll();

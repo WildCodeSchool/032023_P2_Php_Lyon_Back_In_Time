@@ -2,4 +2,11 @@
 
 {% block content %}
 Voici une nouvelle page.
+<div class="container">
+  {% for picture in pictures %}
+  <div class="image">
+    <img id="galleryP"src="{{ picture.url }}" class="d-block w-100" alt="...">
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}

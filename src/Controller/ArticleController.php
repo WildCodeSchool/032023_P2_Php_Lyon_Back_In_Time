@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\Model\PictureManager;
 use App\Service\ArticleService;
+use App\Service\PictureService;
 
 class ArticleController extends AbstractController
 {
@@ -45,7 +47,14 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $article = $articleManager->selectOneById($id);
 
-        return $this->twig->render('Article/show.html.twig', ['article' => $article]);
+        $pictureManager = new PictureManager();
+        $pictures = $pictureManager->selectPicturesByArticleId($id);
+
+
+        return $this->twig->render('Article/show.html.twig', [
+            'article' => $article,
+            'pictures' => $pictures
+        ]);
     }
 
     /**
@@ -88,13 +97,14 @@ class ArticleController extends AbstractController
             $articleService = new ArticleService();
             $articleService->formFilterErrors($article);
             $articleService->secondFormFilterErrors($article);
+            $articleService->photoFormFilterErrors($article);
             $errors = $articleService->errors;
 
             if (empty($errors)) {
                 $articleManager = new ArticleManager();
                 $articleManager->insert($article);
 
-                header('Location:/Accueil');
+                header('Location:/articles/galerie');
                 die();
             }
         }
@@ -102,7 +112,7 @@ class ArticleController extends AbstractController
         if ($_SESSION['admin'] === true) {
             return $this->twig->render('Article/addArticle.html.twig');
         } else {
-            header("location: /");
+            header("location:/");
             die();
         }
     }
@@ -119,5 +129,34 @@ class ArticleController extends AbstractController
 
             header('Location:/items');
         }
+    }
+
+        /**
+     * Add a picture to the article gallery
+     */
+    public function createPhotoGallery(): string
+    {
+        $articleManager = new ArticleManager();
+        $titles = $articleManager->getAllTitles();
+
+        $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $picture = array_map('trim', $_POST);
+
+            $pictureService = new PictureService();
+            $pictureService->pictureFormFilter($picture);
+            $errors = $pictureService->errors;
+
+            if (empty($errors)) {
+                $pictureManager = new PictureManager();
+                $pictureManager->insert($picture);
+
+                header('Location:/Accueil');
+                die();
+            }
+        }
+
+
+        return $this->twig->render('Article/addGallery.html.twig', ['titles' => $titles]);
     }
 }
