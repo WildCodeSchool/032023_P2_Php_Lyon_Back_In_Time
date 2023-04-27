@@ -87,3 +87,17 @@ body {
 .position-sticky {
     top: 2rem;
 }
+
+#carousel {
+
+    display: none;
+  }
+
+  
+  #slider-wrapper img {
+    display: none;
+  }
+  
+  #slider-wrapper img.active {
+    display: block;
+  }
