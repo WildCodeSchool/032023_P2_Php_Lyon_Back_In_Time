@@ -99,6 +99,7 @@ class ArticleController extends AbstractController
             $articleService = new ArticleService();
             $articleService->formFilterErrors($article);
             $articleService->secondFormFilterErrors($article);
+            $articleService->photoFormFilterErrors($article);
             $errors = $articleService->errors;
 
             if (empty($errors)) {
@@ -133,7 +134,7 @@ class ArticleController extends AbstractController
     }
 
         /**
-     * comment later.
+     * Add a picture to the article gallery
      */
     public function createPhotoGallery(): string
     {
@@ -149,11 +150,11 @@ class ArticleController extends AbstractController
             $errors = $pictureService->errors;
 
             if (empty($errors)) {
-            $pictureManager = new PictureManager();
-            $pictureManager->insert($picture);
+                $pictureManager = new PictureManager();
+                $pictureManager->insert($picture);
 
-            header('Location:/Accueil');
-            die();
+                header('Location:/Accueil');
+                die();
             }
         }
 

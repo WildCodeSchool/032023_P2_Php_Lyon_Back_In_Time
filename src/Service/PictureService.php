@@ -18,5 +18,5 @@ class PictureService
         if (filter_var($picture['url'], FILTER_VALIDATE_URL) === false) {
             $this->errors[] = "Le lien de la photo n'est pas valide";
         }
-}
+    }
 }

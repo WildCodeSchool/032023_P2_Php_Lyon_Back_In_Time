@@ -13,7 +13,7 @@ class ArticleManager extends AbstractManager
      */
     public function insert(array $article): void
     {
-        $query = "INSERT INTO " . self::TABLE . " (title,extract,content, photo, category, author, date)
+        $query = "INSERT INTO " . self::TABLE . " (title, extract, content, photo, category, author, date)
                 VALUES (:title, :extract, :content, :photo, :category, :author, :date);";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':title', $article['title'], PDO::PARAM_STR);
