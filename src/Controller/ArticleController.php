@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Model\ArticleManager;
 use App\Model\PictureManager;
 use App\Service\ArticleService;
+use App\Service\PictureService;
 
 class ArticleController extends AbstractController
 {
@@ -104,7 +105,7 @@ class ArticleController extends AbstractController
                 $articleManager = new ArticleManager();
                 $articleManager->insert($article);
 
-                header('Location:/Accueil');
+                header('Location:/articles/galerie');
                 die();
             }
         }
@@ -112,7 +113,7 @@ class ArticleController extends AbstractController
         if ($_SESSION['admin'] === true) {
             return $this->twig->render('Article/addArticle.html.twig');
         } else {
-            header("location: /");
+            header("location:/");
             die();
         }
     }
@@ -139,15 +140,21 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $titles = $articleManager->getAllTitle();
 
-        //$errors = [];
+        $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $picture = array_map('trim', $_POST);
 
+            $pictureService = new PictureService();
+            $pictureService->pictureFormFilter($picture);
+            $errors = $pictureService->errors;
+
+            if (empty($errors)) {
             $pictureManager = new PictureManager();
             $pictureManager->insert($picture);
 
             header('Location:/Accueil');
             die();
+            }
         }
 
 

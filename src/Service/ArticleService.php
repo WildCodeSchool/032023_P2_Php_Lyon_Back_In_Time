@@ -45,4 +45,5 @@ class ArticleService
             $this->errors[] = "Pensez à indiquer la date de publication";
         }
     }
+
 }
