@@ -109,7 +109,7 @@ class ArticleController extends AbstractController
             }
         }
 
-        if ($_SESSION['admin'] === true) {
+        if (isset($_SESSION['admin']) === true) {
             return $this->twig->render('Article/addArticle.html.twig');
         } else {
             header("location:/");
@@ -155,7 +155,7 @@ class ArticleController extends AbstractController
                 die();
             }
         }
-        if ($_SESSION['admin'] === true) {
+        if (isset($_SESSION['admin']) === true) {
             return $this->twig->render('Article/addGallery.html.twig', ['titles' => $titles]);
         } else {
             header("location:/");
