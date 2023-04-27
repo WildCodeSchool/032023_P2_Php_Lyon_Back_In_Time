@@ -48,7 +48,7 @@ class ArticleController extends AbstractController
         $article = $articleManager->selectOneById($id);
 
         $pictureManager = new PictureManager();
-        $pictures = $pictureManager->selectPictureByArticleId($id);
+        $pictures = $pictureManager->selectPicturesByArticleId($id);
 
 
         return $this->twig->render('Article/show.html.twig', [
@@ -137,7 +137,7 @@ class ArticleController extends AbstractController
     public function createPhotoGallery(): string
     {
         $articleManager = new ArticleManager();
-        $titles = $articleManager->getAllTitle();
+        $titles = $articleManager->getAllTitles();
 
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

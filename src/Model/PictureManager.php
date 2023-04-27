@@ -26,7 +26,7 @@ class PictureManager extends AbstractManager
         /**
      * Get one row from database by ID.
      */
-    public function selectPictureByArticleId(int $id): array|false
+    public function selectPicturesByArticleId(int $id): array|false
     {
         // prepared request
         $statement = $this->pdo->prepare("SELECT  p.url FROM " . static::TABLE . " as p

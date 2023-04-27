@@ -54,7 +54,7 @@ class ArticleManager extends AbstractManager
     /**
      * Get the title and the id value of every article.
      */
-    public function getAllTitle(): array
+    public function getAllTitles(): array
     {
         // prepared request
         $query = "SELECT id, title FROM " . static::TABLE . ";";

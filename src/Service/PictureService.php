@@ -11,7 +11,7 @@ class PictureService
         $this->errors = [];
     }
             /**
-     * Second function to filter the article form and return errors
+     * Filter the picture form and return errors
      */
     public function pictureFormFilter($picture): void
     {
