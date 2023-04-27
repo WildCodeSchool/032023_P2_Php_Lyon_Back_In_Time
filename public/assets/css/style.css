@@ -8,6 +8,8 @@
 
 body {
     font-family: var(--main-font);
+    min-height: 100vh;
+    position: relative;
 }
 
 /* navbar */
@@ -86,4 +88,18 @@ body {
 /* to stick the right section off the article page */
 .position-sticky {
     top: 2rem;
+}
+
+/* Connection Pages */
+
+.connexion-form{
+    background-color: var(--main-color);
+}
+
+#connexion-container {
+    margin-bottom: 30px;
+}
+
+.submit-button {
+    width: 20vw;
 }
