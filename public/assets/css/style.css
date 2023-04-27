@@ -83,6 +83,19 @@ body {
     top: 2rem;
 }
 
+#carousel {
+
+    display: none;
+  }
+
+  
+  #slider-wrapper img {
+    display: none;
+  }
+  
+  #slider-wrapper img.active {
+    display: block;
+  }
 /* style for every form */
 
 .submit-button {
