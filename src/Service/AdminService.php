@@ -29,7 +29,7 @@ class AdminService
         $admin = $adminManager->selectOneById(1);
 
         if (empty($this->errors)) {
-            if ($admin['username'] == $data['username'] && $admin['password'] == $data['password']) {
+            if ($admin['username'] == $data['username'] && password_verify($data['password'], $admin['password'])) {
                 $_SESSION['admin'] = true;
                 header("location: /");
             } else {

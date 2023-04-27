@@ -1,11 +1,13 @@
 {% extends 'layout.html.twig' %}
 
-{% block content %}    
-<H1>Hello there</H1>
-<div class="container w-50 bg-secondary p-2">
-    <form action="#"method="post">
+{% block content %}
 
-        <p>
+<h2 class="text-center my-5">Ajouter des photos à votre galerie d'article</h2>
+
+<div class="container w-50 p-2 my-5 shadow-lg rounded-2">
+    <form class="form" method="post">
+
+        <p class="p-2">
             <label for="article" class="form-label font-weight-bold">Article à sélectionner :</label>
             <select name="article_id" id="article_id" required>
                 {% for title in titles %}
@@ -14,14 +16,21 @@
             </select>
         </p>
 
-        <p>
+        <p class="p-2">
             <label for="url" class="form-label font-weight-bold">Lien photo :</label>
             <input type="url" name="url" id="url" class="form-control" required>
         </p>
 
-        <p>
-            <input type="submit" href="" value="Ajouter à la galerie photo" class="form-control">
+        <p class="p-3 d-flex justify-content-center">
+            <input type="submit" href="" value="Ajouter à la galerie photo" class="form-control submit-button">
         </p>
     </form>
-</div>    
+</div>
+
 {% endblock %}
+
+{% block footer %}
+<div class="fixed-bottom">
+    {% include "component/_footer.html.twig" %}
+</div>
+{% endblock footer %}

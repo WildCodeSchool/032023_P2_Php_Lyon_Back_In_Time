@@ -24,7 +24,16 @@ abstract class AbstractController
                 'debug' => true,
             ]
         );
+
         $this->twig->addExtension(new DebugExtension());
         $this->twig->addGlobal('session', $_SESSION);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            if (isset($_GET['logOut'])) {
+                session_destroy();
+                header("location: /");
+                die();
+            }
+        }
     }
 }

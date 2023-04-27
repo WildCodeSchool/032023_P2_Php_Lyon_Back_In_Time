@@ -8,6 +8,8 @@
 
 body {
     font-family: var(--main-font);
+    min-height: 100vh;
+    position: relative;
 }
 
 /* navbar */
@@ -44,13 +46,6 @@ body {
 #btn-home{
     background-color: var(--secondary-color);
     color:white;
-}
-
-
-/* new article form */
-
-.article-form{
-    background-color: var(--main-color);
 }
 
 /* footer */
@@ -101,3 +96,12 @@ body {
   #slider-wrapper img.active {
     display: block;
   }
+/* style for every form */
+
+.submit-button {
+    width: 20vw;
+}
+
+form {
+    background-color: var(--main-color);
+}

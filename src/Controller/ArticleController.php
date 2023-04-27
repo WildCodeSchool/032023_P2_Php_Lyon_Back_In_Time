@@ -109,7 +109,7 @@ class ArticleController extends AbstractController
             }
         }
 
-        if ($_SESSION['admin'] === true) {
+        if (isset($_SESSION['admin']) === true) {
             return $this->twig->render('Article/addArticle.html.twig');
         } else {
             header("location:/");
@@ -131,7 +131,7 @@ class ArticleController extends AbstractController
         }
     }
 
-        /**
+    /**
      * Add a picture to the article gallery
      */
     public function createPhotoGallery(): string
@@ -155,8 +155,11 @@ class ArticleController extends AbstractController
                 die();
             }
         }
-
-
-        return $this->twig->render('Article/addGallery.html.twig', ['titles' => $titles]);
+        if (isset($_SESSION['admin']) === true) {
+            return $this->twig->render('Article/addGallery.html.twig', ['titles' => $titles]);
+        } else {
+            header("location:/");
+            die();
+        }
     }
 }
