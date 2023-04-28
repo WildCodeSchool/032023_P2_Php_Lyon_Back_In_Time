@@ -13,14 +13,20 @@ class PictureManager extends AbstractManager
      */
     public function insert(array $picture): void
     {
+        $pictureUrl = explode("\n", $picture['url']);
+
         $query = "INSERT INTO " . self::TABLE . " (url, article_id)
                 VALUES (:url, :article_id);";
+
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue(':url', $picture['url'], PDO::PARAM_STR);
-        $statement->bindValue(':article_id', $picture['article_id'], PDO::PARAM_STR);
-
-
-        $statement->execute();
+        foreach ($pictureUrl as $line) {
+            $line = trim($line); // remove whitespace
+            if (!empty($line)) { // skip empty lines
+                $statement->bindValue(':url', $line, PDO::PARAM_STR);
+                $statement->bindValue(':article_id', $picture['article_id'], PDO::PARAM_STR);
+                $statement->execute();
+            }
+        }
     }
 
         /**
