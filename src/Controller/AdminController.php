@@ -31,6 +31,5 @@ class AdminController extends AbstractController
             header("location:/");
             die();
         }
-        
     }
 }
