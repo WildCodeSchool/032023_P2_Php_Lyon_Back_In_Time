@@ -5,6 +5,13 @@
 <h2 class="text-center my-5">Ajouter des photos à votre galerie d'article</h2>
 
 <div class="container w-50 p-2 my-5 shadow-lg rounded-2">
+
+    <ul class="bg-danger">
+        {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+    
     <form class="form" method="post">
 
         <p class="p-2">

@@ -21,4 +21,16 @@ class AdminController extends AbstractController
         }
         return $this->twig->render('Admin/connexionAdmin.html.twig');
     }
+
+    public function adminManagementPage(): string
+    {
+
+        if (isset($_SESSION['admin']) === true) {
+            return $this->twig->render('Admin/adminContentManagement.html.twig');
+        } else {
+            header("location:/");
+            die();
+        }
+        
+    }
 }
