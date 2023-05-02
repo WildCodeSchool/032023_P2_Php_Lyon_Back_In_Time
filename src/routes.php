@@ -22,4 +22,5 @@ return [
     'articles/add' => ['ArticleController', 'add',],
     'admin/connection' => ['AdminController', 'connexion',],
     'articles/galerie' => ['ArticleController', 'createPhotoGallery',],
+    'admin/management' => ['AdminController', 'adminManagementPage',],
 ];
