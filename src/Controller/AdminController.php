@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\AdminManager;
+use App\Model\ArticleManager;
 use App\Service\AdminService;
 
 class AdminController extends AbstractController
@@ -26,7 +27,10 @@ class AdminController extends AbstractController
     {
 
         if (isset($_SESSION['admin']) === true) {
-            return $this->twig->render('Admin/adminContentManagement.html.twig');
+            $articlesManager = new ArticleManager();
+            $articles = $articlesManager->selectAll('date', 'DESC');
+
+            return $this->twig->render('Admin/adminContentManagement.html.twig', ['articles' => $articles]);
         } else {
             header("location:/");
             die();
