@@ -19,7 +19,7 @@ return [
     'Accueil' => ['HomeController', 'index',],
     'articles/liste' => ['ArticleController', 'articleList',],
     'articles/show' => ['ArticleController', 'show', ['id']],
-    'articles/add' => ['ArticleController', 'add', ['id']],
+    'articles/add' => ['ArticleController', 'add',],
     'articles/edit' => ['ArticleController', 'edit', ['id']],
     'admin/connection' => ['AdminController', 'connexion',],
     'articles/galerie' => ['ArticleController', 'createPhotoGallery',],

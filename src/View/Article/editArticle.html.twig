@@ -17,27 +17,30 @@
 
         <p class="p-2">
             <label for="title" class="form-label font-weight-bold">Titre :</label>
-            <input type="text" name="title" id="title" class="form-control p-2" maxlength="29" required>
+            <input type="text" name="title" id="title" class="form-control p-2" maxlength="29" value="{{article.title}}"
+                required>
         </p>
 
         <p class="p-2">
             <label for="title" class="form-label font-weight-bold">Accroche :</label>
-            <input type="text" name="extract" id="extract" class="form-control p-2" maxlength="58" required>
+            <input type="text" name="extract" id="extract" class="form-control p-2" maxlength="58"
+                value="{{article.extract}}" required>
         </p>
 
-        <p class="p-2">
+        <p class=" p-2">
             <label for="content" class="form-label font-weight-bold">Contenu :</label>
-            <textarea type="text" name="content" id="mytextarea" class="form-control"></textarea>
+            <textarea type="text" name="content" id="mytextarea" class="form-control" value="{{article.content}}"
+                required></textarea>
         </p>
 
         <p class="p-2">
             <label for="photo" class="form-label font-weight-bold">Lien photo :</label>
-            <input type="url" name="photo" id="photo" class="form-control" required>
+            <input type="url" name="photo" id="photo" class="form-control" value="{{article.photo}}" required>
         </p>
 
         <p class="p-2">
             <label for="category" class="form-label font-weight-bold">Epoque :</label>
-            <select name="category" id="category" required>
+            <select name="category" id="category" value="{{article.category_id}}" required>
                 <option>Jurassique</option>
                 <option>Egypte Antique</option>
                 <option>Renaissance</option>
@@ -46,12 +49,12 @@
 
         <p class="p-2">
             <label for="author" class="form-label font-weight-bold">Nom de l'auteur :</label>
-            <input type="text" name="author" id="author" class="form-control" required>
+            <input type="text" name="author" id="author" class="form-control" value="{{article.author}}" required>
         </p>
 
         <p class="p-2">
             <label for="date" class="form-label ">Date du jour :</label>
-            <input type="date" name="date" id="date" class="form-control" required>
+            <input type="date" name="date" id="date" class="form-control" value="{{article.date}}" required>
         </p>
 
         <p class="p-2">
