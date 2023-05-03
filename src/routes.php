@@ -25,4 +25,5 @@ return [
     'articles/galerie' => ['ArticleController', 'createPhotoGallery',],
     'category/show' => ['CategoryController', 'show', ['id']],
     'admin/management' => ['AdminController', 'adminManagementPage',],
+    'articles/delete' => ['ArticleController', 'delete'],
 ];

@@ -32,20 +32,11 @@
                 <td>{{ article.category }}</td>
                 <td>{{ article.author }}</td>
                 <td>{{ article.date }}</td>
+                <td><a>Modifier</a></td>
                 <td>
-                    <a href="/../articles/edit?id={{article.id}}" class="link-unstyled btn btn-warning">Modifier
-                        Article</a>
-                </td>
-                <td>
-                    <a href="/../articles/edit?id={{article.id}}" class="link-unstyled btn btn-warning">Modifier
-                        Galerie</a>
-                </td>
-                <td>
-                    <form action="#" method="post">
+                    <form action="/articles/delete" method="POST">
                         <input type="hidden" name="id" value="{{ article.id }}">
-                        <button class="btn btn-danger" type="submit" name="delete">
-                            supprimer
-                        </button>
+                        <button>Supprimer</button>
                     </form>
                 </td>
             </tr>

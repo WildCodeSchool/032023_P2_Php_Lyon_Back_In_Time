@@ -121,19 +121,6 @@ class ArticleController extends AbstractController
         }
     }
 
-    /**
-     * Delete a specific item
-     */
-    public function delete(): void
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = trim($_POST['id']);
-            $itemManager = new ArticleManager();
-            $itemManager->delete((int)$id);
-
-            header('Location:/items');
-        }
-    }
 
     /**
      * Add a picture to the article gallery
@@ -164,6 +151,21 @@ class ArticleController extends AbstractController
         } else {
             header("location:/");
             die();
+        }
+    }
+
+
+        /**
+     * Delete a specific item
+     */
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $articleManager = new ArticleManager();
+            $articleManager->deleteFullArticle((int)$id);
+
+            header('Location:/admin/management');
         }
     }
 }
