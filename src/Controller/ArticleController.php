@@ -63,26 +63,26 @@ class ArticleController extends AbstractController
      */
     public function edit(int $id): ?string
     {
-        $itemManager = new ArticleManager();
-        $item = $itemManager->selectOneById($id);
+        $articleManager = new ArticleManager();
+        $article = $articleManager->selectOneById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
-            $item = array_map('trim', $_POST);
+            $article = array_map('trim', $_POST);
 
             // TODO validations (length, format...)
 
             // if validation is ok, update and redirection
-            $itemManager->update($item);
+            $articleManager->update($article);
 
-            header('Location: /items/show?id=' . $id);
+            header('Location: /article/show?id=' . $id);
 
             // we are redirecting so we don't want any content rendered
             return null;
         }
 
-        return $this->twig->render('Item/edit.html.twig', [
-            'item' => $item,
+        return $this->twig->render('Article/editArticle.html.twig', [
+            'article' => $article,
         ]);
     }
 
@@ -155,7 +155,7 @@ class ArticleController extends AbstractController
     }
 
 
-        /**
+    /**
      * Delete a specific item
      */
     public function delete(): void
