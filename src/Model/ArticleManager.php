@@ -8,6 +8,7 @@ class ArticleManager extends AbstractManager
 {
     public const TABLE = 'article';
     public const TABLE2 = 'category';
+    public const TABLE3 = 'picture';
     /**
      * Insert new article in database
      */
@@ -55,7 +56,7 @@ class ArticleManager extends AbstractManager
     public function selectLastThreeArticles(): array
     {
         // prepared request
-        $query = "SELECT * FROM " . static::TABLE . " ORDER BY date DESC LIMIT 3;";
+        $query = "SELECT * FROM " . static::TABLE . " WHERE date <= CURDATE() ORDER BY date DESC LIMIT 3;";
         $statement = $this->pdo->query($query);
 
         return $statement->fetchAll();
@@ -80,7 +81,7 @@ class ArticleManager extends AbstractManager
     public function selectArticlesByCategory(int $id): array|false
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " as a 
-        INNER JOIN " . static::TABLE2 . " as c ON a.category_id=c.id WHERE c.id=:id");
+        INNER JOIN " . static::TABLE2 . " as c ON a.category_id=c.id WHERE date <= CURDATE() AND c.id=:id");
         $statement->bindValue(':id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
@@ -93,8 +94,8 @@ class ArticleManager extends AbstractManager
     public function deleteFullArticle(int $id): void
     {
         // prepared request
-        $statement = $this->pdo->prepare("DELETE article , picture FROM " . static::TABLE . " LEFT JOIN picture 
-		on picture.article_id = article.id WHERE article.id=:id;");
+        $statement = $this->pdo->prepare("DELETE article , picture FROM " . static::TABLE . " LEFT 
+        JOIN " . static::TABLE3 . " on picture.article_id = article.id WHERE article.id=:id;");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
