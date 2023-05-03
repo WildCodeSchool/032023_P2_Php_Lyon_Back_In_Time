@@ -6,5 +6,5 @@ use PDO;
 
 class CategoryManager extends AbstractManager
 {
-    public const TABLE = 'category'; 
+    public const TABLE = 'category';
 }
