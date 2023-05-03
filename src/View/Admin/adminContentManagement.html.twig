@@ -1,7 +1,15 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
-<h1>Bienvenu Admin</h1>
-<h2>Page de gestion du contenu de Back In Time</h2>
+<h1 class="text-center">Bienvenu Admin</h1>
+<h2 class="text-center">Page de gestion du contenu de Back In Time</h2>
+<div class="mx-3">
+    <p>Tous nos des articles: <a href="/articles/liste">Par ici</a></p>
+    <p>Page Connection Admin <a href="/admin/connection">Par ici</a></p>
+    <p>Page rédaction: <a href="/articles/add">Par ici</a></p>
+    <p>Page de création de gallerie photo: <a href="/articles/galerie">Par ici</a></p>
+    <p>PAGE TEST<a href="/newPage">page test</a></p>
+    <p>CRUB<a href="/items">items</a> page.</p>
+</div>
 <div class="table-responsive-md m-3">
     <table class="table table-striped table-bordered border-dark">
         <thead class="table-dark">
@@ -35,7 +43,5 @@
 {% endblock %}
 
 {% block footer %}
-<div class="fixed-bottom">
-    {% include "component/_footer.html.twig" %}
-</div>
+{% include "component/_footer.html.twig" %}
 {% endblock %}
