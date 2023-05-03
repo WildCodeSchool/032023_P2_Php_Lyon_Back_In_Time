@@ -7,20 +7,20 @@ use PDO;
 class ArticleManager extends AbstractManager
 {
     public const TABLE = 'article';
-
+    public const TABLE2 = 'category';
     /**
      * Insert new article in database
      */
     public function insert(array $article): void
     {
-        $query = "INSERT INTO " . self::TABLE . " (title, extract, content, photo, category, author, date)
-                VALUES (:title, :extract, :content, :photo, :category, :author, :date);";
+        $query = "INSERT INTO " . self::TABLE . " (title, extract, content, photo, category_id, author, date)
+                VALUES (:title, :extract, :content, :photo, :category_id, :author, :date);";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':title', $article['title'], PDO::PARAM_STR);
         $statement->bindValue(':extract', $article['extract'], PDO::PARAM_STR);
         $statement->bindValue(':content', $article['content'], PDO::PARAM_STR);
         $statement->bindValue(':photo', $article['photo'], PDO::PARAM_STR);
-        $statement->bindValue(':category', $article['category'], PDO::PARAM_STR);
+        $statement->bindValue(':category_id', $article['category_id'], PDO::PARAM_STR);
         $statement->bindValue(':author', $article['author'], PDO::PARAM_STR);
         $statement->bindValue(':date', $article['date'], PDO::PARAM_STR);
 
@@ -59,6 +59,20 @@ class ArticleManager extends AbstractManager
         // prepared request
         $query = "SELECT id, title FROM " . static::TABLE . ";";
         $statement = $this->pdo->query($query);
+
+        return $statement->fetchAll();
+    }
+
+    /**
+     * Get the list of articles by category
+     */
+
+    public function selectArticlesByCategory(int $id): array|false
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " as a 
+        INNER JOIN " . static::TABLE2 . " as c ON a.category_id=c.id WHERE c.id=:id");
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+        $statement->execute();
 
         return $statement->fetchAll();
     }

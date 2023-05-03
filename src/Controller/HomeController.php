@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ArticleManager;
+use App\Model\CategoryManager;
 
 class HomeController extends AbstractController
 {
@@ -14,6 +15,12 @@ class HomeController extends AbstractController
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectLastThreeArticles();
 
-        return $this->twig->render('Home/index.html.twig', ['articles' => $articles]);
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll('id');
+
+        return $this->twig->render('Home/index.html.twig', [
+            'articles' => $articles,
+            'categories' => $categories,
+        ]);
     }
 }
