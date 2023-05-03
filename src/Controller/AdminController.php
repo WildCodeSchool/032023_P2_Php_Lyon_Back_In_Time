@@ -28,8 +28,14 @@ class AdminController extends AbstractController
 
         if (isset($_SESSION['admin']) === true) {
             $articlesManager = new ArticleManager();
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                if (isset($_POST['delete'])) {
+                    $articlesManager->delete($_POST['id']);
+                    header('Location: /../admin/management');
+                    die();
+                }
+            }
             $articles = $articlesManager->selectAll('date', 'DESC');
-
             return $this->twig->render('Admin/adminContentManagement.html.twig', ['articles' => $articles]);
         } else {
             header("location:/");
