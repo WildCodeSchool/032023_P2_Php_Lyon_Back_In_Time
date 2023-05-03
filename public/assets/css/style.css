@@ -102,6 +102,11 @@ body {
     width: 20vw;
 }
 
-form {
+.form {
     background-color: var(--main-color);
 }
+
+.link-unstyled, .link-unstyled:link, .link-unstyled:hover {
+    color: inherit;
+    text-decoration: inherit;
+  }

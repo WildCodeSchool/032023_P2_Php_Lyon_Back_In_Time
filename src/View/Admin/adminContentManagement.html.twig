@@ -14,27 +14,40 @@
     <table class="table table-striped table-bordered border-dark">
         <thead class="table-dark">
             <tr>
-                <th scope="col">ID</th>
                 <th scope="col">Titre</th>
                 <th scope="col">Resumé</th>
                 <th scope="col">Categorie</th>
                 <th scope="col">Auteur</th>
                 <th scope="col">Date</th>
-                <th scope="col">Modifier</th>
+                <th scope="col">Modifier Article</th>
+                <th scope="col">Modifier Galerie</th>
                 <th scope="col">Supprimer</th>
             </tr>
         </thead>
         <tbody>
             {% for article in articles %}
             <tr>
-                <th scope="row">{{ article.id }}</th>
                 <td><a href="/../articles/show?id={{article.id}}">{{ article.title }}</a></td>
                 <td>{{ article.extract }}</td>
                 <td>{{ article.category }}</td>
                 <td>{{ article.author }}</td>
                 <td>{{ article.date }}</td>
-                <td><a href="">modifier</a></td>
-                <td><a href="">supprimer</a></td>
+                <td>
+                    <a href="/../articles/edit?id={{article.id}}" class="link-unstyled btn btn-warning">Modifier
+                        Article</a>
+                </td>
+                <td>
+                    <a href="/../articles/edit?id={{article.id}}" class="link-unstyled btn btn-warning">Modifier
+                        Galerie</a>
+                </td>
+                <td>
+                    <form action="#" method="post">
+                        <input type="hidden" name="id" value="{{ article.id }}">
+                        <button class="btn btn-danger" type="submit" name="delete">
+                            supprimer
+                        </button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
