@@ -62,4 +62,16 @@ class ArticleManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+                /**
+     * Delete article and pictures from an ID
+     */
+    public function deleteFullArticle(int $id): void
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("DELETE article , picture FROM " . static::TABLE . " LEFT JOIN picture 
+		on picture.article_id = article.id WHERE article.id=:id;");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }

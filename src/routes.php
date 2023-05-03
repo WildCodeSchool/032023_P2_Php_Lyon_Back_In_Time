@@ -23,4 +23,5 @@ return [
     'admin/connection' => ['AdminController', 'connexion',],
     'articles/galerie' => ['ArticleController', 'createPhotoGallery',],
     'admin/management' => ['AdminController', 'adminManagementPage',],
+    'articles/delete' => ['ArticleController', 'delete'],
 ];
