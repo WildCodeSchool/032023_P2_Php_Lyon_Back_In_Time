@@ -37,10 +37,10 @@
 
         <p class="p-2">
             <label for="category" class="form-label font-weight-bold">Epoque :</label>
-            <select name="category" id="category" required>
-                <option>Jurassique</option>
-                <option>Egypte Antique</option>
-                <option>Renaissance</option>
+            <select name="category_id" id="category_id" required>
+                {% for category in categories %}
+                <option value="{{category.id}}">{{category.name}}</option>
+                {% endfor %}
             </select>
         </p>
 

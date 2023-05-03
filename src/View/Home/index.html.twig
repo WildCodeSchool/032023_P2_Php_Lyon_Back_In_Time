@@ -19,34 +19,57 @@
 
 
   <div class="row border-bottom p-2 my-4">
-    <h3 class="text-start py-2">Nos derniers articles</h3>
+    <h3 class="text-start py-2">Découvrez nos époques</h3>
   </div>
 
-  <div class="container latest-articles mb-5  ">
+  <div class="container categories mb-5  ">
 
     <div class="row row-cols-1 row-cols-md-2 justify-content-center   row-cols-xl-3 g-4 mx-4">
-      {% for article in articles %}
+      {% for category in categories %}
       <div class="col">
-        <div class="card h-100 shadow-lg p-2">
-          <img src="{{ article.photo }}" class="card-img-top h-50" alt="article-illustration">
-          <div class="card-body">
-            <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text fs-6 fw-light">{{ article.extract}}</p>
-            <h6 class="fst-italic fw-light">Par {{ article.author }}</h6>
-          </div>
-          <div class="card-footer">
-            <a href="/articles/show?id={{ article.id }}" class="btn btn-sm m-0" id="btn-home">Voir plus</a>
-          </div>
+        <a href="/category/show?id={{category.id}} ">
+          <div class="card shadow-lg p-2">
+            <img src="{{category.url}}" class="card-img-top h-50" alt="article-illustration">
+            <div class="card-body">
+              <h5 class="card-title text-center mt-1">{{ category.name }}</h5>
+            </div>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<div class="row border-bottom p-2 my-4">
+  <h3 class="text-start py-2">Nos derniers articles</h3>
+</div>
+
+<div class="container latest-articles mb-5  ">
+
+  <div class="row row-cols-1 row-cols-md-2 justify-content-center   row-cols-xl-3 g-4 mx-4">
+    {% for article in articles %}
+    <div class="col">
+      <div class="card h-100 shadow-lg p-2">
+        <img src="{{ article.photo }}" class="card-img-top h-50" alt="article-illustration">
+        <div class="card-body">
+          <h5 class="card-title">{{ article.title }}</h5>
+          <p class="card-text fs-6 fw-light">{{ article.extract}}</p>
+          <h6 class="fst-italic fw-light">Par {{ article.author }}</h6>
+        </div>
+        <div class="card-footer">
+          <a href="/articles/show?id={{ article.id }}" class="btn btn-sm m-0" id="btn-home">Voir plus</a>
         </div>
       </div>
-      {% else %}
-      <ul>
-        <li>Rien à afficher</li>
-      </ul>
-      {% endfor %}
     </div>
-
+    {% else %}
+    <ul>
+      <li>Rien à afficher</li>
+    </ul>
+    {% endfor %}
   </div>
+
+</div>
 
 </div>
 {% endblock %}

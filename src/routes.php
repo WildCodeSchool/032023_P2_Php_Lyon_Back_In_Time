@@ -23,5 +23,6 @@ return [
     'articles/edit' => ['ArticleController', 'edit',],
     'admin/connection' => ['AdminController', 'connexion',],
     'articles/galerie' => ['ArticleController', 'createPhotoGallery',],
+    'category/show' => ['CategoryController', 'show', ['id']],
     'admin/management' => ['AdminController', 'adminManagementPage',],
 ];

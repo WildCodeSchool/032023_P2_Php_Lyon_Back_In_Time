@@ -48,6 +48,11 @@ body {
     color:white;
 }
 
+.categories a{
+    text-decoration: none;
+    color: black;
+}
+
 /* footer */
 
 #footer{
