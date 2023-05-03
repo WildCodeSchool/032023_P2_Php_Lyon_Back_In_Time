@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\ArticleManager;
 use App\Model\PictureManager;
+use App\Model\CategoryManager;
 use App\Service\ArticleService;
 use App\Service\PictureService;
 
@@ -90,6 +91,9 @@ class ArticleController extends AbstractController
      */
     public function add(): string
     {
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $article = array_map('trim', $_POST);
@@ -110,7 +114,7 @@ class ArticleController extends AbstractController
         }
 
         if (isset($_SESSION['admin']) === true) {
-            return $this->twig->render('Article/addArticle.html.twig');
+            return $this->twig->render('Article/addArticle.html.twig', ['categories' => $categories]);
         } else {
             header("location:/");
             die();
