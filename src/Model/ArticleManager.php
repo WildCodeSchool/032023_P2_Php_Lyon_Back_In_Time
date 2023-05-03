@@ -39,6 +39,16 @@ class ArticleManager extends AbstractManager
         return $statement->execute();
     }
 
+    public function selectAllArticles(): array
+    {
+        $query = 'SELECT  a.title, a.extract, a.author, a.date, c.name
+        FROM ' . static::TABLE . ' as a
+            INNER JOIN ' . static::TABLE2 . ' as c on a.category_id=c.id ORDER BY date DESC;';
+
+        return $this->pdo->query($query)->fetchAll();
+    }
+
+
     /**
      * Get 3 rows from database by most recent date.
      */
@@ -77,7 +87,7 @@ class ArticleManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-                /**
+    /**
      * Delete article and pictures from an ID
      */
     public function deleteFullArticle(int $id): void
@@ -87,5 +97,14 @@ class ArticleManager extends AbstractManager
 		on picture.article_id = article.id WHERE article.id=:id;");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
+    }
+
+    public function updateArticle(array $article): bool
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE id=:id");
+        $statement->bindValue('id', $article['id'], PDO::PARAM_INT);
+        $statement->bindValue('title', $article['title'], PDO::PARAM_STR);
+
+        return $statement->execute();
     }
 }

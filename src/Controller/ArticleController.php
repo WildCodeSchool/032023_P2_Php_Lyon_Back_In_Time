@@ -61,7 +61,7 @@ class ArticleController extends AbstractController
     /**
      * Edit a specific item
      */
-    public function edit(int $id): ?string
+    public function editArticle(int $id): ?string
     {
         $articleManager = new ArticleManager();
         $article = $articleManager->selectOneById($id);
@@ -73,16 +73,20 @@ class ArticleController extends AbstractController
             // TODO validations (length, format...)
 
             // if validation is ok, update and redirection
-            $articleManager->update($article);
+            $articleManager->updateArticle($article);
 
-            header('Location: /article/show?id=' . $id);
+            header('Location: ');
 
             // we are redirecting so we don't want any content rendered
             return null;
         }
 
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+
         return $this->twig->render('Article/editArticle.html.twig', [
             'article' => $article,
+            'categories' => $categories
         ]);
     }
 

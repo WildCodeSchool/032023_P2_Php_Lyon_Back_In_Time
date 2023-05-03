@@ -29,8 +29,8 @@
 
         <p class=" p-2">
             <label for="content" class="form-label font-weight-bold">Contenu :</label>
-            <textarea type="text" name="content" id="mytextarea" class="form-control" value="{{article.content}}"
-                required></textarea>
+            <textarea type="text" name="content" id="mytextarea" class="form-control"
+                required>{{article.content}}</textarea>
         </p>
 
         <p class="p-2">
@@ -40,10 +40,10 @@
 
         <p class="p-2">
             <label for="category" class="form-label font-weight-bold">Epoque :</label>
-            <select name="category" id="category" value="{{article.category_id}}" required>
-                <option>Jurassique</option>
-                <option>Egypte Antique</option>
-                <option>Renaissance</option>
+            <select name="category_id" id="category_id" required>
+                {% for category in categories %}
+                <option value="{{category.id}}">{{category.name}}</option>
+                {% endfor %}
             </select>
         </p>
 
