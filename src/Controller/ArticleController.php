@@ -81,7 +81,7 @@ class ArticleController extends AbstractController
             return null;
         }
 
-        return $this->twig->render('article/edit.html.twig', [
+        return $this->twig->render('Article/editArticle.html.twig', [
             'article' => $article,
         ]);
     }
@@ -155,7 +155,7 @@ class ArticleController extends AbstractController
     }
 
 
-        /**
+    /**
      * Delete a specific item
      */
     public function delete(): void

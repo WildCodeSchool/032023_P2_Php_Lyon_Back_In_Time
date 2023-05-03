@@ -20,7 +20,7 @@ return [
     'articles/liste' => ['ArticleController', 'articleList',],
     'articles/show' => ['ArticleController', 'show', ['id']],
     'articles/add' => ['ArticleController', 'add', ['id']],
-    'articles/edit' => ['ArticleController', 'edit',],
+    'articles/edit' => ['ArticleController', 'edit', ['id']],
     'admin/connection' => ['AdminController', 'connexion',],
     'articles/galerie' => ['ArticleController', 'createPhotoGallery',],
     'category/show' => ['CategoryController', 'show', ['id']],
