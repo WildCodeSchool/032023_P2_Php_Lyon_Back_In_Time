@@ -15,12 +15,8 @@ class HomeController extends AbstractController
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectLastThreeArticles();
 
-        $categoryManager = new CategoryManager();
-        $categories = $categoryManager->selectAll('id');
-
         return $this->twig->render('Home/index.html.twig', [
             'articles' => $articles,
-            'categories' => $categories,
         ]);
     }
 }
