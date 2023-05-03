@@ -142,7 +142,7 @@ class ArticleController extends AbstractController
                 $pictureManager = new PictureManager();
                 $pictureManager->insert($picture);
 
-                header('Location:/articles/show?id');
+                header('Location:/Accueil');
                 die();
             }
         }
