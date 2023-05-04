@@ -44,7 +44,7 @@ class PictureManager extends AbstractManager
     }
 
         /**
-     * Delete row form an ID
+     * Delete a row from table 'picture'
      */
     public function deletePicture(int $id): void
     {

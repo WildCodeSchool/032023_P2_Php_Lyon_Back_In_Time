@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2 class="text-center my-5">Ajouter des photos à votre galerie d'article</h2>
+
 
 <div class="container w-50 p-2 my-5 shadow-lg rounded-2">
 
@@ -13,27 +13,27 @@
     </ul>
     
    
+    <h1 class=" my-5">Supprimer les photos de l'article :</h1>
 
-        <h1 class="p-2">
-            <label for="article" value="{{ article.id }}" class="form-label font-weight-bold">{{ article.title }}</label>
-        </h1>
+        <h2 class="p-2">
+            <label for="article" value="{{ article.id }}" class="form-label font-weight-bold">"{{ article.title }}"</label>
+        </h2>
 
         <div class="row " >
-            <label for="url" class="form-label font-weight-bold">Liens photo :</label>
+            <h3 class="p-2">
+                <label for="url" class="form-label font-weight-bold">Photos :</label>
+            </h3>
             {% for picture in pictures %}
                 <div class=" p-2 col-lg-3 col-md-4 col-6"> 
                     <img src="{{ picture.url }}"  name="id" id="id" class="form-control" required>
                     <form action="/photo/delete" method="POST">
                         <input type="hidden" name="id" value="{{ picture.id }}">
-                        <button>Delete</button>
+                        <button>Supprimer</button>
                     </form>
                 </div>
             {% endfor %}
         </div>
-        
-        <p class="p-3 d-flex justify-content-center">
-            <input type="button" href="/admin/management" value="Retour page admin" class="form-control">
-
+        <a class="p-3 d-flex justify-content-center" href="/admin/management">Retour</a>
 </div>
 
 {% endblock %}

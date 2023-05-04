@@ -179,7 +179,7 @@ class ArticleController extends AbstractController
         }
     }
 
-    public function editGallery(int $id): string
+    public function showGallery(int $id): string
     {
         $articleManager = new ArticleManager();
         $article = $articleManager->selectOneById($id);
