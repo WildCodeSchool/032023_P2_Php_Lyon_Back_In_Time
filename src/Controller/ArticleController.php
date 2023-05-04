@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Model\ArticleManager;
 use App\Model\PictureManager;
-use App\Model\CategoryManager;
 use App\Service\ArticleService;
 use App\Service\PictureService;
 
