@@ -28,21 +28,9 @@ class ArticleManager extends AbstractManager
         $statement->execute();
     }
 
-    /**
-     * Update item in database
-     */
-    public function update(array $item): bool
-    {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE id=:id");
-        $statement->bindValue('id', $item['id'], PDO::PARAM_INT);
-        $statement->bindValue('title', $item['title'], PDO::PARAM_STR);
-
-        return $statement->execute();
-    }
-
     public function selectAllArticles(): array
     {
-        $query = 'SELECT  a.title, a.extract, a.author, a.date, c.name
+        $query = 'SELECT a.id, a.title, a.extract, a.author, a.date, c.name
         FROM ' . static::TABLE . ' as a
             INNER JOIN ' . static::TABLE2 . ' as c on a.category_id=c.id ORDER BY date DESC;';
 
@@ -102,9 +90,25 @@ class ArticleManager extends AbstractManager
 
     public function updateArticle(array $article): bool
     {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE id=:id");
-        $statement->bindValue('id', $article['id'], PDO::PARAM_INT);
-        $statement->bindValue('title', $article['title'], PDO::PARAM_STR);
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " 
+        SET 
+            `title` = :title,
+            `extract` = :extract,
+            `content` = :content,
+            `photo` = :photo,
+            `category_id` = :category_id,
+            `author` = :author,
+            `date` = :date
+        WHERE 
+            id=:id");
+        $statement->bindValue(':title', $article['title'], PDO::PARAM_STR);
+        $statement->bindValue(':extract', $article['extract'], PDO::PARAM_STR);
+        $statement->bindValue(':content', $article['content'], PDO::PARAM_STR);
+        $statement->bindValue(':photo', $article['photo'], PDO::PARAM_STR);
+        $statement->bindValue(':category_id', $article['category_id'], PDO::PARAM_STR);
+        $statement->bindValue(':author', $article['author'], PDO::PARAM_STR);
+        $statement->bindValue(':date', $article['date'], PDO::PARAM_STR);
+        $statement->bindValue(':id', $article['id'], PDO::PARAM_STR);
 
         return $statement->execute();
     }

@@ -64,30 +64,35 @@ class ArticleController extends AbstractController
     public function editArticle(int $id): ?string
     {
         $articleManager = new ArticleManager();
-        $article = $articleManager->selectOneById($id);
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $article = array_map('trim', $_POST);
-
-            // TODO validations (length, format...)
-
-            // if validation is ok, update and redirection
-            $articleManager->updateArticle($article);
-
-            header('Location: ');
-
-            // we are redirecting so we don't want any content rendered
-            return null;
-        }
-
         $categoryManager = new CategoryManager();
+        $article = $articleManager->selectOneById($id);
         $categories = $categoryManager->selectAll();
 
-        return $this->twig->render('Article/editArticle.html.twig', [
-            'article' => $article,
-            'categories' => $categories
-        ]);
+        $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $article = array_map('trim', $_POST);
+
+            $articleService = new ArticleService();
+            $articleService->formFilterErrors($article);
+            $articleService->secondFormFilterErrors($article);
+            $articleService->photoFormFilterErrors($article);
+            $errors = $articleService->errors;
+
+            if (empty($errors)) {
+                var_dump($article);
+                $articleManager->updateArticle($article);
+                header('Location:/articles/show?id=' . $article["id"]);
+                die();
+            }
+            return $this->twig->render('Article/editArticle.html.twig', ['article' => $article, 'categories' => $categories, 'errors' => $articleService->errors]);
+        }
+
+        if (isset($_SESSION['admin']) === true) {
+            return $this->twig->render('Article/editArticle.html.twig', ['article' => $article, 'categories' => $categories]);
+        } else {
+            header("location:/");
+            die();
+        }
     }
 
     /**
@@ -115,6 +120,7 @@ class ArticleController extends AbstractController
                 header('Location:/articles/galerie');
                 die();
             }
+            return $this->twig->render('Article/addArticle.html.twig', ['errors' => $articleService->errors]);
         }
 
         if (isset($_SESSION['admin']) === true) {
