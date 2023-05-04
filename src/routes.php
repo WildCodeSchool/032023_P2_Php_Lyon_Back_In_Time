@@ -26,4 +26,6 @@ return [
     'category/show' => ['CategoryController', 'show', ['id']],
     'admin/management' => ['AdminController', 'adminManagementPage',],
     'articles/delete' => ['ArticleController', 'delete'],
+    'category/delete' => ['CategoryController', 'delete'],
+    'category/add' => ['CategoryController', 'addCategory'],
 ];
