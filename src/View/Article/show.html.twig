@@ -7,14 +7,16 @@
 
 {% block content %}
 
-<img src="/assets/images/dolorean.jpg" class="img-fluid mx-auto d-block" alt="dolorean">
+<div class="container-fluid top-img p-0">
+  <img src="{{pixcategory.url}}" class="img-fluid mx-auto d-block" alt="category-picture">
+  <h2 class="text-img text-center p-3 w-25 mx-auto">{{ article.title }}</h2>
+</div>
 
 <div class="container">
     <div class="row g-5">
         <div class="col-md-9 ">
 
-            <h2 class="my-4 text-center">{{ article.title }}</h2>
-            <div class="px-3 py-1 mb-4">
+            <div class="px-3 py-1 my-4">
                 <p>Date de publication : {{ article.date|date("d/m/Y") }}</p>
                 <p>{% autoescape %}{{ article.content|raw }} {% endautoescape %}</p>
             </div>

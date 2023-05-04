@@ -51,10 +51,13 @@ class ArticleController extends AbstractController
         $pictureManager = new PictureManager();
         $pictures = $pictureManager->selectPicturesByArticleId($id);
 
+        $articleManager = new ArticleManager();
+        $pixcategory = $articleManager->selectOneWithCategory($id);
 
         return $this->twig->render('Article/show.html.twig', [
             'article' => $article,
-            'pictures' => $pictures
+            'pictures' => $pictures,
+            'pixcategory' => $pixcategory
         ]);
     }
 
@@ -106,9 +109,6 @@ class ArticleController extends AbstractController
      */
     public function add(): string
     {
-        $categoryManager = new CategoryManager();
-        $categories = $categoryManager->selectAll();
-
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $article = array_map('trim', $_POST);
@@ -130,7 +130,7 @@ class ArticleController extends AbstractController
         }
 
         if (isset($_SESSION['admin']) === true) {
-            return $this->twig->render('Article/addArticle.html.twig', ['categories' => $categories]);
+            return $this->twig->render('Article/addArticle.html.twig');
         } else {
             header("location:/");
             die();
