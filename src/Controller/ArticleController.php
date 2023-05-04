@@ -67,9 +67,7 @@ class ArticleController extends AbstractController
     public function editArticle(int $id): ?string
     {
         $articleManager = new ArticleManager();
-        $categoryManager = new CategoryManager();
         $article = $articleManager->selectOneById($id);
-        $categories = $categoryManager->selectAll();
 
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -88,15 +86,13 @@ class ArticleController extends AbstractController
             }
             return $this->twig->render('Article/editArticle.html.twig', [
                 'article' => $article,
-                'categories' => $categories,
                 'errors' => $articleService->errors
             ]);
         }
 
         if (isset($_SESSION['admin']) === true) {
             return $this->twig->render('Article/editArticle.html.twig', [
-                'article' => $article,
-                'categories' => $categories
+                'article' => $article
             ]);
         } else {
             header("location:/");
@@ -149,7 +145,6 @@ class ArticleController extends AbstractController
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $picture = array_map('trim', $_POST);
-
             $pictureService = new PictureService();
             $pictureService->pictureFormFilter($picture);
             $errors = $pictureService->errors;
@@ -158,7 +153,7 @@ class ArticleController extends AbstractController
                 $pictureManager = new PictureManager();
                 $pictureManager->insert($picture);
 
-                header('Location:/Accueil');
+                header('Location:/articles/show?id=' . $picture['article_id']);
                 die();
             }
         }
