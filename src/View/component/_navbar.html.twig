@@ -9,21 +9,15 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end fs-6" id="navbarSupportedContent">
             <ul class="navbar-nav">
+                {% for category in categories %}
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Jurassique</a>
+                    <a class="nav-link active" href="/category/show?id={{category.id}} ">{{ category.name }}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Egypte Antique</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Renaissance</a>
-                </li>
+                {% endfor %}
+
                 {% if session.admin is same as true %}
                 <li class="nav-item">
-                    <a class="nav-link active" href="/articles/add">Créer Un Article</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/admin/management">Gérer le contenu</a>
+                    <a class="nav-link active" href="/admin/management">PAGE ADMIN</a>
                 </li>
                 <li class="nav-item">
                     <form action="" method="get">

@@ -11,17 +11,14 @@
         <li>{{ error }}</li>
         {% endfor %}
     </ul>
-    
-    <form class="form" method="post">
 
-        <p class="p-2">
-            <label for="article" class="form-label font-weight-bold">Article à sélectionner :</label>
-            <select name="article_id" id="article_id" required>
-                {% for title in titles %}
-                <option value="{{ title.id }}">{{ title.title }}</option>
-                {% endfor %}
-            </select>
-        </p>
+    
+
+
+    <form class="form" method="post">
+        <input type="hidden" value="{{ article.id }}" name="article_id">
+
+        <h2 class="p-2"  name="article_id" id="article_id" value="{{ article.id }}">"{{ article.title }}"</h2>
 
         <p class="p-2">
             <label for="url" class="form-label font-weight-bold">Lien photo :</label>

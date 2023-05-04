@@ -118,7 +118,7 @@ class ArticleController extends AbstractController
                 $articleManager = new ArticleManager();
                 $articleManager->insert($article);
 
-                header('Location:/articles/galerie');
+                header('Location:/articles/galerie?id=' . $article["id"]);
                 die();
             }
             return $this->twig->render('Article/addArticle.html.twig', ['errors' => $articleService->errors]);
@@ -136,10 +136,10 @@ class ArticleController extends AbstractController
     /**
      * Add a picture to the article gallery
      */
-    public function createPhotoGallery(): string
+    public function createPhotoGallery(int $id): string
     {
         $articleManager = new ArticleManager();
-        $titles = $articleManager->getAllTitles();
+        $article = $articleManager->selectOneById($id);
 
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -157,7 +157,7 @@ class ArticleController extends AbstractController
             }
         }
         if (isset($_SESSION['admin']) === true) {
-            return $this->twig->render('Article/addGallery.html.twig', ['titles' => $titles]);
+            return $this->twig->render('Article/addGallery.html.twig', ['article' => $article]);
         } else {
             header("location:/");
             die();
