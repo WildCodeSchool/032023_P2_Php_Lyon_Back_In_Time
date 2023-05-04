@@ -79,7 +79,6 @@ class ArticleController extends AbstractController
             $errors = $articleService->errors;
 
             if (empty($errors)) {
-                var_dump($article);
                 $articleManager->updateArticle($article);
                 header('Location:/articles/show?id=' . $article["id"]);
                 die();
