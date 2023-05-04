@@ -128,3 +128,16 @@ body {
     color: inherit;
     text-decoration: inherit;
   }
+
+/* Admin management page */
+.btn-management {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color:unset;
+}
+
+.btn-management:hover {
+    background-color: var(--main-color);
+    color: white;
+    border-color:unset;
+}

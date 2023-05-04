@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Model\ArticleManager;
 use App\Model\PictureManager;
-use App\Model\CategoryManager;
 use App\Service\ArticleService;
 use App\Service\PictureService;
 
@@ -64,29 +63,40 @@ class ArticleController extends AbstractController
     /**
      * Edit a specific item
      */
-    public function edit(int $id): ?string
+    public function editArticle(int $id): ?string
     {
         $articleManager = new ArticleManager();
         $article = $articleManager->selectOneById($id);
 
+        $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
             $article = array_map('trim', $_POST);
 
-            // TODO validations (length, format...)
+            $articleService = new ArticleService();
+            $articleService->formFilterErrors($article);
+            $articleService->secondFormFilterErrors($article);
+            $articleService->photoFormFilterErrors($article);
+            $errors = $articleService->errors;
 
-            // if validation is ok, update and redirection
-            $articleManager->update($article);
-
-            header('Location: /article/show?id=' . $id);
-
-            // we are redirecting so we don't want any content rendered
-            return null;
+            if (empty($errors)) {
+                $articleManager->updateArticle($article);
+                header('Location:/articles/show?id=' . $article["id"]);
+                die();
+            }
+            return $this->twig->render('Article/editArticle.html.twig', [
+                'article' => $article,
+                'errors' => $articleService->errors
+            ]);
         }
 
-        return $this->twig->render('Article/editArticle.html.twig', [
-            'article' => $article,
-        ]);
+        if (isset($_SESSION['admin']) === true) {
+            return $this->twig->render('Article/editArticle.html.twig', [
+                'article' => $article
+            ]);
+        } else {
+            header("location:/");
+            die();
+        }
     }
 
     /**
@@ -111,6 +121,7 @@ class ArticleController extends AbstractController
                 header('Location:/articles/galerie');
                 die();
             }
+            return $this->twig->render('Article/addArticle.html.twig', ['errors' => $articleService->errors]);
         }
 
         if (isset($_SESSION['admin']) === true) {
@@ -133,7 +144,6 @@ class ArticleController extends AbstractController
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $picture = array_map('trim', $_POST);
-
             $pictureService = new PictureService();
             $pictureService->pictureFormFilter($picture);
             $errors = $pictureService->errors;
@@ -142,7 +152,7 @@ class ArticleController extends AbstractController
                 $pictureManager = new PictureManager();
                 $pictureManager->insert($picture);
 
-                header('Location:/Accueil');
+                header('Location:/articles/show?id=' . $picture['article_id']);
                 die();
             }
         }

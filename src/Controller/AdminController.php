@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\AdminManager;
 use App\Model\ArticleManager;
+use App\Model\CategoryManager;
 use App\Service\AdminService;
 
 class AdminController extends AbstractController
@@ -35,8 +36,10 @@ class AdminController extends AbstractController
                     die();
                 }
             }
-            $articles = $articlesManager->selectAll('date', 'DESC');
-            return $this->twig->render('Admin/adminContentManagement.html.twig', ['articles' => $articles]);
+            $articles = $articlesManager->selectAllArticles();
+            return $this->twig->render('Admin/adminContentManagement.html.twig', [
+                'articles' => $articles,
+            ]);
         } else {
             header("location:/");
             die();
