@@ -178,4 +178,31 @@ class ArticleController extends AbstractController
             header('Location:/admin/management');
         }
     }
+
+    public function showGallery(int $id): string
+    {
+        $articleManager = new ArticleManager();
+        $article = $articleManager->selectOneById($id);
+
+        $pictureManager = new PictureManager();
+        $pictures = $pictureManager->selectPicturesByArticleId($id);
+
+
+        return $this->twig->render('Article/editGallery.html.twig', [
+            'article' => $article,
+            'pictures' => $pictures
+        ]);
+    }
+
+
+    public function deleteOnePicture(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $pictureManager = new PictureManager();
+            $pictureManager->deletePicture((int)$id);
+
+            header('Location:/admin/management');
+        }
+    }
 }
