@@ -82,7 +82,20 @@ body {
 .primary-link a {
     color: var(--secondary-color);
 }
- 
+
+.top-img {
+    position: relative;
+} 
+
+.text-img{
+    position: absolute;
+    top: 50%;
+    left: 50%;  
+    transform: translate(-50%, -50%);
+    background-color: rgba(229,214,205,0.5);
+    border-radius: 5px;
+}
+
 /* to stick the right section off the article page */
 .position-sticky {
     top: 2rem;

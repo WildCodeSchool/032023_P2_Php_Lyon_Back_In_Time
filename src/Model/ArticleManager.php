@@ -69,12 +69,28 @@ class ArticleManager extends AbstractManager
 
     public function selectArticlesByCategory(int $id): array|false
     {
-        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " as a 
-        INNER JOIN " . static::TABLE2 . " as c ON a.category_id=c.id WHERE c.id=:id");
+        $statement = $this->pdo->prepare("SELECT *, c.id as categoryId, a.id as articleId  
+        FROM " . static::TABLE . " as a INNER JOIN " . static::TABLE2 . " as c ON 
+        a.category_id=c.id WHERE c.id=:id");
         $statement->bindValue(':id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetchAll();
+    }
+
+    /**
+     * Get one article with joined database
+     * */
+
+    public function selectOneWithCategory(int $id): array|false
+    {
+        $statement = $this->pdo->prepare("SELECT *, c.id as categoryId, a.id as articleId 
+        FROM " . static::TABLE . " as a INNER JOIN " . static::TABLE2 . " as c ON
+        a.category_id=c.id WHERE a.id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
     }
 
                 /**
