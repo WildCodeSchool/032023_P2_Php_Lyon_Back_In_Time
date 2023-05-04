@@ -35,7 +35,7 @@ class PictureManager extends AbstractManager
     public function selectPicturesByArticleId(int $id): array|false
     {
         // prepared request
-        $statement = $this->pdo->prepare("SELECT  p.url FROM " . static::TABLE . " as p
+        $statement = $this->pdo->prepare("SELECT  p.url, p.id FROM " . static::TABLE . " as p
         INNER JOIN article as a on p.article_id=a.id WHERE p.article_id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
@@ -49,8 +49,7 @@ class PictureManager extends AbstractManager
     public function deletePicture(int $id): void
     {
         // prepared request
-        $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " 
-        WHERE id=:id;");
+        $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE id=:id;");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
