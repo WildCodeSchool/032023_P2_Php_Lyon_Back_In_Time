@@ -84,11 +84,18 @@ class ArticleController extends AbstractController
                 header('Location:/articles/show?id=' . $article["id"]);
                 die();
             }
-            return $this->twig->render('Article/editArticle.html.twig', ['article' => $article, 'categories' => $categories, 'errors' => $articleService->errors]);
+            return $this->twig->render('Article/editArticle.html.twig', [
+                'article' => $article,
+                'categories' => $categories,
+                'errors' => $articleService->errors
+            ]);
         }
 
         if (isset($_SESSION['admin']) === true) {
-            return $this->twig->render('Article/editArticle.html.twig', ['article' => $article, 'categories' => $categories]);
+            return $this->twig->render('Article/editArticle.html.twig', [
+                'article' => $article,
+                'categories' => $categories
+            ]);
         } else {
             header("location:/");
             die();
