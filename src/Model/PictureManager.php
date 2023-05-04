@@ -42,4 +42,16 @@ class PictureManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+        /**
+     * Delete row form an ID
+     */
+    public function deletePicture(int $id): void
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " 
+        WHERE id=:id;");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }

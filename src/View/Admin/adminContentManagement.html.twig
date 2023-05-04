@@ -33,7 +33,7 @@
                 <td>{{ article.author }}</td>
                 <td>{{ article.date }}</td>
                 <td><a href="/articles/edit?id={{article.id}}">Modifier</a></td>
-                <td>Modifier</td>
+                <td><a href="/gallery/edit?id={{article.id}}">Modifier</a></td>
                 <td>
                     <form action="/articles/delete" method="POST">
                         <input type="hidden" name="id" value="{{ article.id }}">

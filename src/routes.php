@@ -26,4 +26,6 @@ return [
     'category/show' => ['CategoryController', 'show', ['id']],
     'admin/management' => ['AdminController', 'adminManagementPage',],
     'articles/delete' => ['ArticleController', 'delete'],
+    'gallery/edit' => ['ArticleController', 'editGallery',['id']],
+    'photo/delete' => ['ArticleController', 'deleteOnePicture'],
 ];
