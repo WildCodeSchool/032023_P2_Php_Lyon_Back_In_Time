@@ -10,9 +10,6 @@
         <a href="/articles/add">
             <button class="btn btn-management">Créer un article</button>
         </a>
-        <a href="/articles/galerie">
-            <button class="btn btn-management">Créer une galerie</button>
-        </a>
     </div>
 </div>
 <div class="table-responsive-md m-3">
@@ -25,6 +22,7 @@
                 <th scope="col">Auteur</th>
                 <th scope="col">Date</th>
                 <th scope="col">Modifier Article</th>
+                <th scope="col">Ajouter photos</th>
                 <th scope="col">Modifier Galerie</th>
                 <th scope="col">Supprimer</th>
             </tr>
@@ -38,6 +36,7 @@
                 <td>{{ article.author }}</td>
                 <td>{{ article.date }}</td>
                 <td><a href="/articles/edit?id={{article.id}}">Modifier</a></td>
+                <td><a href="/articles/galerie?id={{article.id}}">Ajouter</a></td>
                 <td><a href="/gallery/edit?id={{article.id}}">Modifier</a></td>
                 <td>
                     <form action="/articles/delete" method="POST">
