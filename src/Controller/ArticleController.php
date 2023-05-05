@@ -187,11 +187,15 @@ class ArticleController extends AbstractController
         $pictureManager = new PictureManager();
         $pictures = $pictureManager->selectPicturesByArticleId($id);
 
-
-        return $this->twig->render('Article/editGallery.html.twig', [
-            'article' => $article,
-            'pictures' => $pictures
-        ]);
+        if (isset($_SESSION['admin']) === true) {
+            return $this->twig->render('Article/editGallery.html.twig', [
+                'article' => $article,
+                'pictures' => $pictures
+            ]);
+        } else {
+            header("location:/");
+            die();
+        }
     }
 
 
