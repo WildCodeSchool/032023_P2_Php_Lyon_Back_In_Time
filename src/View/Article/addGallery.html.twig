@@ -11,20 +11,17 @@
         <li>{{ error }}</li>
         {% endfor %}
     </ul>
+
     
+
+
     <form class="form" method="post">
+        <input type="hidden" value="{{ article.id }}" name="article_id">
+
+        <h2 class="p-2"  name="article_id" id="article_id" value="{{ article.id }}">Article: "{{ article.title }}"</h2>
 
         <p class="p-2">
-            <label for="article" class="form-label font-weight-bold">Article à sélectionner :</label>
-            <select name="article_id" id="article_id" required>
-                {% for title in titles %}
-                <option value="{{ title.id }}">{{ title.title }}</option>
-                {% endfor %}
-            </select>
-        </p>
-
-        <p class="p-2">
-            <label for="url" class="form-label font-weight-bold">Lien photo :</label>
+            <label for="url" class="form-label font-weight-bold">Liens photo :</label>
             <textarea type="url" name="url" id="url" class="form-control" required></textarea>
         </p>
 
@@ -32,6 +29,7 @@
             <input type="submit" href="" value="Ajouter à la galerie photo" class="form-control submit-button">
         </p>
     </form>
+    <a class="p-3 d-flex justify-content-center" href="/admin/management">Retour</a>
 </div>
 
 {% endblock %}
