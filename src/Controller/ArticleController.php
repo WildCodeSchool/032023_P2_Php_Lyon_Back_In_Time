@@ -198,11 +198,11 @@ class ArticleController extends AbstractController
     public function deleteOnePicture(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = trim($_POST['id']);
+            $id = array_map('trim', $_POST);
             $pictureManager = new PictureManager();
-            $pictureManager->deletePicture((int)$id);
+            $pictureManager->deletePicture((int)$id['picture_id']);
 
-            header('Location:/admin/management');
+            header('Location:/gallery/edit?id=' . $id['article_id']);
         }
     }
 }
