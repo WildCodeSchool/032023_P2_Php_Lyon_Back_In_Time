@@ -34,7 +34,7 @@
                 <td>{{ article.extract }}</td>
                 <td>{{ article.name }}</td>
                 <td>{{ article.author }}</td>
-                <td>{{ article.date }}</td>
+                <td>{{ article.date|date("d/m/Y") }}</td>
                 <td><a href="/articles/edit?id={{article.id}}">Modifier</a></td>
                 <td><a href="/articles/galerie?id={{article.id}}">Ajouter</a></td>
                 <td><a href="/gallery/edit?id={{article.id}}">Modifier</a></td>
