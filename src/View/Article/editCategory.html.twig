@@ -1,0 +1,41 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<h2 class="text-center my-5">Modifier catégorie</h2>
+
+<div class="container w-50 p-2 my-5 shadow-lg rounded-2">
+
+    <ul class="bg-danger">
+        {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+
+    <form class="form" method="post">
+        <input type="hidden" value="{{ category.id }}" name="id">
+
+
+        <p class="p-2">
+            <label for="name" class="form-label font-weight-bold">Nom de la catégorie :</label>
+            <input type="text" name="name" id="name" class="form-control" value="{{category.name}}" required>
+        </p>
+
+        <p class=" p-2">
+            <label for="url" class="form-label font-weight-bold">Lien photo :</label>
+            <input type="url" name="url" id="url" class="form-control" value="{{category.url}}" required>
+        </p>
+
+        <p class="p-3 d-flex justify-content-center">
+            <input type="submit" href="" value="Modifier" class="form-control submit-button">
+        </p>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<div class="fixed-bottom">
+    {% include "component/_footer.html.twig" %}
+</div>
+{% endblock %}

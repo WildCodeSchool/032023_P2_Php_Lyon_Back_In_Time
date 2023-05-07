@@ -21,15 +21,29 @@ class CategoryController extends AbstractController
         ]);
     }
 
+    public function list(): string
+    {
+        if (isset($_SESSION['admin']) === true) {
+            $categoryManager = new CategoryManager();
+            $category = $categoryManager->selectAll();
+
+            return $this->twig->render('Article/categoryList.html.twig', [
+                'category' => $category
+            ]);
+        } else {
+            header("location:/");
+            die();
+        }
+    }
+
     public function addCategory(): string
     {
         // $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $category = array_map('trim', $_POST);
-            // $pictureService = new PictureService();
-            // $pictureService->pictureFormFilter($picture);
-            // $errors = $pictureService->errors;
-            // if (empty($errors)) {}
+
+            // TODO security
+
             $categoryManager = new CategoryManager();
             $categoryManager->insertCategory($category);
             header('Location:/');
@@ -37,6 +51,37 @@ class CategoryController extends AbstractController
         }
         if (isset($_SESSION['admin']) === true) {
             return $this->twig->render('Article/addCategory.html.twig');
+        } else {
+            header("location:/category/list");
+            die();
+        }
+    }
+
+    public function editCategory(int $id): ?string
+    {
+        $categoryManager = new categoryManager();
+        $category = $categoryManager->selectOneById($id);
+
+        // $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $category = array_map('trim', $_POST);
+
+            // TODO security
+
+            $categoryManager->updateCategory($category);
+            header('Location:/category/list');
+            die();
+
+            // return $this->twig->render('Category/editCategory.html.twig', [
+            //     'category' => $category,
+            //     'errors' => $categoryService->errors
+            // ]);
+        }
+
+        if (isset($_SESSION['admin']) === true) {
+            return $this->twig->render('Article/editCategory.html.twig', [
+                'category' => $category
+            ]);
         } else {
             header("location:/");
             die();
@@ -50,7 +95,7 @@ class CategoryController extends AbstractController
             $categoryManager = new CategoryManager();
             $categoryManager->delete((int)$id);
 
-            header('Location:/admin/management');
+            header('Location:/category/list');
         }
     }
 }

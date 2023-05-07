@@ -4,8 +4,8 @@
 <h2 class="text-center">Page de gestion du contenu de Back In Time</h2>
 <div class="container">
     <div class="m-5 d-flex justify-content-between">
-        <a href="/articles/liste">
-            <button class="btn btn-management">Liste des articles</button>
+        <a href="/category/list">
+            <button class="btn btn-management">Liste des categorie</button>
         </a>
         <a href="/articles/add">
             <button class="btn btn-management">Créer un article</button>
@@ -54,5 +54,7 @@
 {% endblock %}
 
 {% block footer %}
-{% include "component/_footer.html.twig" %}
+<div class="fixed-bottom">
+    {% include "component/_footer.html.twig" %}
+</div>
 {% endblock %}
