@@ -30,4 +30,6 @@ return [
     'category/delete' => ['CategoryController', 'delete'],
     'category/add' => ['CategoryController', 'addCategory'],
     'category/edit' => ['CategoryController', 'editCategory', ['id']],
+    'gallery/edit' => ['ArticleController', 'showGallery', ['id']],
+    'photo/delete' => ['ArticleController', 'deleteOnePicture'],
 ];

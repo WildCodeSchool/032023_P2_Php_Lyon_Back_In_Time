@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+
+
+<div class="container w-50 p-2 my-5 shadow-lg rounded-2">
+
+    <ul class="bg-danger">
+        {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+    
+   
+    <h1 class=" my-5">Modifier les photos de la galerie de :</h1>
+    <h2 class="p-2" value="{{ article.id }}">"{{ article.title }}"</h2>
+        <div class="row " >
+            {% for picture in pictures %}
+                <div class=" p-2 col-lg-3 col-md-4 col-6"> 
+                    <img src="{{ picture.url }}"  class="form-control" required>
+                    <form action="/photo/delete" method="POST">
+                        <input type="hidden" name="id" value="{{ picture.id }}">
+                        <button>Supprimer</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+        <a class="p-3 d-flex justify-content-center" href="/admin/management">Retour</a>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<div class="fixed-bottom">
+    {% include "component/_footer.html.twig" %}
+</div>
+{% endblock %}
