@@ -118,7 +118,7 @@ class ArticleController extends AbstractController
                 $articleManager = new ArticleManager();
                 $articleManager->insert($article);
 
-                header('Location:/articles/galerie?id=' . $article["id"]);
+                header('Location:/admin/management');
                 die();
             }
             return $this->twig->render('Article/addArticle.html.twig', ['errors' => $articleService->errors]);
@@ -187,22 +187,26 @@ class ArticleController extends AbstractController
         $pictureManager = new PictureManager();
         $pictures = $pictureManager->selectPicturesByArticleId($id);
 
-
-        return $this->twig->render('Article/editGallery.html.twig', [
-            'article' => $article,
-            'pictures' => $pictures
-        ]);
+        if (isset($_SESSION['admin']) === true) {
+            return $this->twig->render('Article/editGallery.html.twig', [
+                'article' => $article,
+                'pictures' => $pictures
+            ]);
+        } else {
+            header("location:/");
+            die();
+        }
     }
 
 
     public function deleteOnePicture(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = trim($_POST['id']);
+            $id = array_map('trim', $_POST);
             $pictureManager = new PictureManager();
-            $pictureManager->deletePicture((int)$id);
+            $pictureManager->deletePicture((int)$id['picture_id']);
 
-            header('Location:/admin/management');
+            header('Location:/gallery/edit?id=' . $id['article_id']);
         }
     }
 }

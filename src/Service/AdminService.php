@@ -31,7 +31,7 @@ class AdminService
         if (empty($this->errors)) {
             if ($admin['username'] == $data['username'] && password_verify($data['password'], $admin['password'])) {
                 $_SESSION['admin'] = true;
-                header("location: /");
+                header("location: /admin/management");
             } else {
                 $this->errors[] = "Mauvais nom d'utilisateur ou mots de passe";
             }
