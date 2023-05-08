@@ -28,6 +28,7 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectLastThreeArticles();
 
+
         return $this->twig->render('Article/articlelist.html.twig', ['articles' => $articles]);
     }
 
@@ -47,6 +48,9 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $article = $articleManager->selectOneById($id);
 
+        $articleManager = new ArticleManager();
+        $writer = $articleManager->selectWriterByArticleId($id);
+
         $pictureManager = new PictureManager();
         $pictures = $pictureManager->selectPicturesByArticleId($id);
 
@@ -55,6 +59,7 @@ class ArticleController extends AbstractController
 
         return $this->twig->render('Article/show.html.twig', [
             'article' => $article,
+            'writer' => $writer,
             'pictures' => $pictures,
             'pixcategory' => $pixcategory
         ]);
