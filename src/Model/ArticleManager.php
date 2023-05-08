@@ -15,15 +15,15 @@ class ArticleManager extends AbstractManager
      */
     public function insert(array $article): void
     {
-        $query = "INSERT INTO " . self::TABLE . " (title, extract, content, photo, category_id, author, date)
-                VALUES (:title, :extract, :content, :photo, :category_id, :author, :date);";
+        $query = "INSERT INTO " . self::TABLE . " (title, extract, content, photo, category_id, writer_id, date)
+                VALUES (:title, :extract, :content, :photo, :category_id, :writer_id, :date);";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':title', $article['title'], PDO::PARAM_STR);
         $statement->bindValue(':extract', $article['extract'], PDO::PARAM_STR);
         $statement->bindValue(':content', $article['content'], PDO::PARAM_STR);
         $statement->bindValue(':photo', $article['photo'], PDO::PARAM_STR);
         $statement->bindValue(':category_id', $article['category_id'], PDO::PARAM_STR);
-        $statement->bindValue(':author', $article['author'], PDO::PARAM_STR);
+        $statement->bindValue(':writer_id', $article['writer_id'], PDO::PARAM_STR);
         $statement->bindValue(':date', $article['date'], PDO::PARAM_STR);
 
         $statement->execute();
@@ -118,7 +118,7 @@ class ArticleManager extends AbstractManager
             `content` = :content,
             `photo` = :photo,
             `category_id` = :category_id,
-            `author` = :author,
+            `writer_id` = :writer_id,
             `date` = :date
         WHERE 
             id=:id");
@@ -127,7 +127,7 @@ class ArticleManager extends AbstractManager
         $statement->bindValue(':content', $article['content'], PDO::PARAM_STR);
         $statement->bindValue(':photo', $article['photo'], PDO::PARAM_STR);
         $statement->bindValue(':category_id', $article['category_id'], PDO::PARAM_STR);
-        $statement->bindValue(':author', $article['author'], PDO::PARAM_STR);
+        $statement->bindValue(':writer_id', $article['writer_id'], PDO::PARAM_STR);
         $statement->bindValue(':date', $article['date'], PDO::PARAM_STR);
         $statement->bindValue(':id', $article['id'], PDO::PARAM_STR);
 

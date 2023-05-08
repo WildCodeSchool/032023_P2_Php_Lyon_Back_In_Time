@@ -123,7 +123,7 @@ class ArticleController extends AbstractController
                 $articleManager = new ArticleManager();
                 $articleManager->insert($article);
 
-                header('Location:/articles/galerie?id=' . $article["id"]);
+                header('Location:/admin/management');
                 die();
             }
             return $this->twig->render('Article/addArticle.html.twig', ['errors' => $articleService->errors]);
