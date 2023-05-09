@@ -44,10 +44,16 @@
             </select>
         </p>
 
+
         <p class="p-2">
-            <label for="author" class="form-label font-weight-bold">Nom de l'auteur :</label>
-            <input type="text" name="author" id="author" class="form-control" required>
+            <label for="writer_id" class="form-label font-weight-bold">Auteur :</label>
+            <select name="writer_id" id="writer_id" required>
+                {% for writer in writers %}
+                <option value="{{writer.id}}">{{writer.firstname}}</option>
+                {% endfor %}
+            </select>
         </p>
+
 
         <p class="p-2">
             <label for="date" class="form-label ">Date du jour :</label>

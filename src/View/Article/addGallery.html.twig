@@ -12,13 +12,14 @@
         {% endfor %}
     </ul>
 
-    
+
 
 
     <form class="form" method="post">
         <input type="hidden" value="{{ article.id }}" name="article_id">
 
-        <h2 class="p-2"  name="article_id" id="article_id" value="{{ article.id }}">Article: "{{ article.title }}"</h2>
+        <h2 class="p-2 text-center" name="article_id" id="article_id" value="{{ article.id }}">Article: "{{
+            article.title }}"</h2>
 
         <p class="p-2">
             <label for="url" class="form-label font-weight-bold">Liens photo :</label>
