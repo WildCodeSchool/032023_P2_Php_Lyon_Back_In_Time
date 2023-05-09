@@ -41,10 +41,6 @@ class ArticleService
             $this->errors[] = "Pensez à écrire du contenu";
         }
 
-        if (!isset($article['author']) || empty($article['author'])) {
-            $this->errors[] = "Pensez à vous identifier";
-        }
-
         if (!isset($article['date']) || empty($article['date'])) {
             $this->errors[] = "Pensez à indiquer la date de publication";
         }
