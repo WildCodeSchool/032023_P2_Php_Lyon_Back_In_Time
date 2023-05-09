@@ -22,7 +22,7 @@ return [
     'articles/add' => ['ArticleController', 'add',],
     'articles/edit' => ['ArticleController', 'editArticle', ['id']],
     'admin/connection' => ['AdminController', 'connexion',],
-    'articles/galerie' => ['ArticleController', 'createPhotoGallery',],
+    'articles/galerie' => ['ArticleController', 'createPhotoGallery', ['id']],
     'category/show' => ['CategoryController', 'show', ['id']],
     'admin/management' => ['AdminController', 'adminManagementPage',],
     'articles/delete' => ['ArticleController', 'delete'],
