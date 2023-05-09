@@ -46,7 +46,7 @@
 
 
         <p class="p-2">
-            <label for="writer" class="form-label font-weight-bold">Auteur :</label>
+            <label for="writer_id" class="form-label font-weight-bold">Auteur :</label>
             <select name="writer_id" id="writer_id" required>
                 {% for writer in writers %}
                 <option value="{{writer.id}}">{{writer.firstname}}</option>
