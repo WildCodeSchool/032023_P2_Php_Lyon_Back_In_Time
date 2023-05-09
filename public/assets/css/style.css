@@ -69,6 +69,10 @@ body {
     color:white;
 }
 
+#btn-home:hover{
+    background-color: var(--main-color);
+    color: black;
+}
 .categories a{
     text-decoration: none;
     color: black;
