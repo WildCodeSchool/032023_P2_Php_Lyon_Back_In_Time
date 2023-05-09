@@ -6,7 +6,6 @@ use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
 use App\Model\CategoryManager;
-use App\Model\WriterManager;
 
 /**
  * Initialized some Controller common features (Twig...)
