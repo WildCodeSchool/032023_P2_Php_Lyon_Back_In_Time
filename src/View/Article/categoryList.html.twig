@@ -1,7 +1,9 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
-<h1 class="text-center">Liste Catégorie</h1>
-<h2 class="text-center">Page de gestion du contenu de Back In Time</h2>
+<div class="my-5">
+    <h1 class="text-center">Liste Catégorie</h1>
+    <h2 class="text-center">Page de gestion du contenu de Back In Time</h2>
+</div>
 <div class="container">
     <div class="m-5 d-flex justify-content-center">
         <a href="/category/add">
@@ -13,7 +15,7 @@
         <p>{{ error }}</p>
     </div>
 </div>
-<div class="table-responsive-md m-3">
+<div class="table-responsive-md m-3 mb-5">
     <table class="table table-striped table-bordered border-dark">
         <thead class="table-dark">
             <tr>
@@ -24,18 +26,19 @@
             </tr>
         </thead>
         <tbody>
-            {% for category in categories_numbers_articles %}
+            {% for category in categoriesWithNumberOfArticle %}
             <tr>
                 <td><a href="/category/show?id={{category.id}}">{{ category.name }}</a></td>
                 <td>
-                    <p>{{ category.number_article }}</p>
+                    <h4>{{ category.number_article }}</h4>
                 </td>
                 <td><a href="/category/edit?id={{category.id}}">
-                        <button>Modifier</button></a></td>
+                        <button class="btn btn-management">Modifier</button>
+                    </a></td>
                 <td>
                     <form action="/category/delete" method="POST">
                         <input type="hidden" name="id" value="{{ category.id }}">
-                        <button>Supprimer</button>
+                        <button class="btn btn-danger">Supprimer</button>
                     </form>
                 </td>
             </tr>
@@ -44,9 +47,6 @@
     </table>
 </div>
 {% endblock %}
-
 {% block footer %}
-<div class="fixed-bottom">
-    {% include "component/_footer.html.twig" %}
-</div>
+{% include "component/_footer.html.twig" %}
 {% endblock %}

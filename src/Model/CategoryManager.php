@@ -35,11 +35,11 @@ class CategoryManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function selectCategory(): array|false
+    public function selectAllWithNumberOfArticle(): array|false
     {
-        $query = 'SELECT c.id, c.name, COUNT(a.id) as number_article FROM category as c
-        INNER JOIN article a ON a.category_id = c.id 
-        GROUP BY category_id;';
+        $query = 'SELECT c.id, c.name, COUNT(a.category_id) as number_article FROM category as c
+        LEFT JOIN article a ON a.category_id = c.id 
+        GROUP BY c.id, c.name, a.category_id ;';
 
         return $this->pdo->query($query)->fetchAll();
     }
