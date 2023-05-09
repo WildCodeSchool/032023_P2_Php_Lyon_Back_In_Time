@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\ArticleManager;
 use App\Model\PictureManager;
+use App\Model\WriterManager;
 use App\Service\ArticleService;
 use App\Service\PictureService;
 
@@ -28,6 +29,7 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectLastThreeArticles();
 
+
         return $this->twig->render('Article/articlelist.html.twig', ['articles' => $articles]);
     }
 
@@ -47,6 +49,9 @@ class ArticleController extends AbstractController
         $articleManager = new ArticleManager();
         $article = $articleManager->selectOneById($id);
 
+        $articleManager = new ArticleManager();
+        $writer = $articleManager->selectWriterByArticleId($id);
+
         $pictureManager = new PictureManager();
         $pictures = $pictureManager->selectPicturesByArticleId($id);
 
@@ -55,6 +60,7 @@ class ArticleController extends AbstractController
 
         return $this->twig->render('Article/show.html.twig', [
             'article' => $article,
+            'writer' => $writer,
             'pictures' => $pictures,
             'pixcategory' => $pixcategory
         ]);
@@ -67,6 +73,8 @@ class ArticleController extends AbstractController
     {
         $articleManager = new ArticleManager();
         $article = $articleManager->selectOneById($id);
+        $writerManager = new WriterManager();
+        $writers = $writerManager->selectAll();
 
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -85,13 +93,15 @@ class ArticleController extends AbstractController
             }
             return $this->twig->render('Article/editArticle.html.twig', [
                 'article' => $article,
-                'errors' => $articleService->errors
+                'errors' => $articleService->errors,
+                'writers' => $writers
             ]);
         }
 
         if (isset($_SESSION['admin']) === true) {
             return $this->twig->render('Article/editArticle.html.twig', [
-                'article' => $article
+                'article' => $article,
+                'writers' => $writers
             ]);
         } else {
             header("location:/");
@@ -104,6 +114,9 @@ class ArticleController extends AbstractController
      */
     public function add(): string
     {
+        $writerManager = new WriterManager();
+        $writers = $writerManager->selectAll();
+
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $article = array_map('trim', $_POST);
@@ -121,11 +134,15 @@ class ArticleController extends AbstractController
                 header('Location:/admin/management');
                 die();
             }
-            return $this->twig->render('Article/addArticle.html.twig', ['errors' => $articleService->errors]);
+            return $this->twig->render('Article/addArticle.html.twig', [
+                'errors' => $articleService->errors,
+                'writers' => $writers
+
+            ]);
         }
 
         if (isset($_SESSION['admin']) === true) {
-            return $this->twig->render('Article/addArticle.html.twig');
+            return $this->twig->render('Article/addArticle.html.twig', ['writers' => $writers]);
         } else {
             header("location:/");
             die();
