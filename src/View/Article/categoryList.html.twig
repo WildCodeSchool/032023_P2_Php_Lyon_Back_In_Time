@@ -18,14 +18,18 @@
         <thead class="table-dark">
             <tr>
                 <th scope="col">Nom catégorie</th>
+                <th scope="col">Nombre d'article</th>
                 <th scope="col">Modifier catégorie</th>
                 <th scope="col">Supprimer catégorie</th>
             </tr>
         </thead>
         <tbody>
-            {% for category in categories %}
+            {% for category in categories_number_article %}
             <tr>
                 <td><a href="/category/show?id={{category.id}}">{{ category.name }}</a></td>
+                <td>
+                    <p>{{ category.number_article }}</p>
+                </td>
                 <td><a href="/category/edit?id={{category.id}}">
                         <button>Modifier</button></a></td>
                 <td>

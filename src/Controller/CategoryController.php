@@ -26,10 +26,9 @@ class CategoryController extends AbstractController
     {
         if (isset($_SESSION['admin']) === true) {
             $categoryManager = new CategoryManager();
-            $category = $categoryManager->selectAll();
-
+            $categories = $categoryManager->selectCategory();
             return $this->twig->render('Article/categoryList.html.twig', [
-                'category' => $category
+                'categories_number_article' => $categories
             ]);
         } else {
             header("location:/");
@@ -106,11 +105,11 @@ class CategoryController extends AbstractController
                 die();
             } else {
                 $categoryManager = new CategoryManager();
-                $category = $categoryManager->selectAll();
+                $categories = $categoryManager->selectCategory();
                 $error = "Vous avez toujours des articles dans cette catégorie,
                 Veuillez supprimer ou changer de catégorie les articles";
                 return $this->twig->render('Article/categoryList.html.twig', [
-                    'category' => $category,
+                    'categories_number_article' => $categories,
                     'error' => $error
                 ]);
             }
