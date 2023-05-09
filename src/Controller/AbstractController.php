@@ -29,13 +29,10 @@ abstract class AbstractController
 
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll('id');
-        $articleManager = new WriterManager();
-        $writers = $articleManager->selectAll('id');
 
         $this->twig->addExtension(new DebugExtension());
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addGlobal('categories', $categories);
-        $this->twig->addGlobal('writers', $writers);
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             if (isset($_GET['logOut'])) {
