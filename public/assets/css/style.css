@@ -1,7 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;500;700&display=swap');
 
 :root {
@@ -36,13 +33,22 @@ body {
     background-color: var(--main-color);
 }
 
+#log-out:hover{
+    color: white;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    transition: all linear 0.2s;
+ }
+
 .nav-item{
    font-weight: 700;
 }
 
 #navbarSupportedContent a:hover {
-   color: var(--secondary-color);
-   transition: all linear 0.5s;
+   color: white;
+   border-radius: 5px;
+   background-color: var(--secondary-color);
+   transition: all linear 0.2s;
 }
 
 /* presentation */
@@ -108,7 +114,7 @@ body {
     top: 50%;
     left: 50%;  
     transform: translate(-50%, -50%);
-    background-color: rgba(229,214,205,0.5);
+    background-color: rgba(229,214,205,0.8);
     border-radius: 5px;
 }
 
