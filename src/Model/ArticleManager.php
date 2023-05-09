@@ -46,7 +46,7 @@ class ArticleManager extends AbstractManager
     public function selectLastThreeArticles(): array
     {
         // prepared request
-        $query = "SELECT * , w.firstname FROM " . static::TABLE . " as a
+        $query = "SELECT *, a.id as article_id, w.firstname FROM " . static::TABLE . " as a
         INNER JOIN " . static::TABLE4 . " as w on a.writer_id=w.id WHERE date <= CURDATE() ORDER BY date DESC LIMIT 3;";
         $statement = $this->pdo->query($query);
 
