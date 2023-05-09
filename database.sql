@@ -1,67 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
---
--- Client :  localhost
--- Généré le :  Jeu 26 Octobre 2017 à 13:53
--- Version du serveur :  5.7.19-0ubuntu0.16.04.1
--- Version de PHP :  7.0.22-0ubuntu0.16.04.1
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données :  `simple-mvc`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `item`
---
-
-CREATE TABLE `item` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `item`
---
-
-INSERT INTO `item` (`id`, `title`) VALUES
-(1, 'Stuff'),
-(2, 'Doodads');
-
---
--- Index pour les tables exportées
---
-
---
--- Index pour la table `item`
---
-ALTER TABLE `item`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `item`
---
-ALTER TABLE `item`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
 USE projet_2;
 
 SELECT * FROM article;
@@ -84,8 +20,47 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`username`, `type`, `password`) VALUES
 ('Admin2023', 'admin', '$2y$10$xQMlJsK6av7/J5KXFxp6KOb6lPxrbAhARIWmJQ8tCW2XWExF4rbJe');
 
+CREATE TABLE writer (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    firstname VARCHAR(100) NOT NULL,
+    presentation VARCHAR (255) NOT NULL 
+);
+
+INSERT INTO writer (firstname, presentation)
+VALUES
+('Laetitia','C\'est moi Laetitia'),
+('Baptiste','C\'est moi Baptiste'),
+('Ben','C\'est moi Ben'')
+;
+
 /* update following changes form articles*/ 
 
+CREATE TABLE picture (
+id INT PRIMARY KEY AUTO_INCREMENT,
+url VARCHAR(255) NOT NULL,
+article_id INT NOT NULL
+);
+
+INSERT INTO picture (url, article_id)
+VALUES
+('https://picsum.photos/id/28/4928/3264', 12),
+('https://picsum.photos/id/29/4000/2670', 12),
+('https://picsum.photos/id/135/2560/1920', 12),
+('https://picsum.photos/id/179/2048/1365', 3)
+;
+
+CREATE TABLE category (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    url VARCHAR (255) NOT NULL 
+);
+
+INSERT INTO category (name , url)
+VALUES
+('Jurassique','/assets/images/jurassique.jpg'),
+('Egypte Antique','/assets/images/egypte-antique.jpg'),
+('Renaissance','/assets/images/renaissance.jpg')
+;
 
 CREATE TABLE article (
 id INT PRIMARY KEY AUTO_INCREMENT,
