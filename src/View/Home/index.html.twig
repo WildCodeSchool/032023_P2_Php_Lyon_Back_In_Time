@@ -1,37 +1,25 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
 
-<div class="container-fluid top-img p-0">
-  <img src="\assets\images\dolorean.jpg" class="img-fluid mx-auto d-block" alt="dolorean">
-  <h1 class="text-img text-center fs-1 p-3 w-25 mx-auto">Back In Time</h1>
-</div>
-<div class="container">
 
+<img src="\assets\images\dolorean.jpg" class="img-fluid mx-auto d-block" alt="dolorean">
 
-  <div class="row welcome p-5 my-4 ">
-    <h2 class="text-center">Blog de voyage temporel</h2>
-    <p class="mt-3">
-      Bienvenue sur Back in Time, un blog dédié aux voyages dans le temps ! Si vous êtes passionné par l'idée de
-      découvrir de nouvelles époques, de rencontrer des personnages historiques et de vous immerger dans des lieux
-      mythiques, vous êtes au bon endroit. Ici, nous vous proposons une exploration passionnante de l'univers du voyage
-      temporel, avec des articles rédigés par des experts qui partagent avec vous leurs connaissances et leur passion.
-      <br><br>
+<div class="container ">
 
-      Notre blog couvre tous les aspects du voyage dans le temps, depuis les théories les plus fascinantes sur la nature
-      du temps jusqu'aux techniques pratiques pour voyager dans le passé. Nous vous guidons pas à pas pour vous préparer
-      à vos voyages, en vous donnant des astuces et en vous indiquant les pièges à éviter et profiter au maximum de
-      chaque expérience. <br><br>
+  <div class="row welcome p-5 mx-auto ">
+    <div class="col-xl-10 mx-auto">
+      <h1 class="text-center p-3 mb-0">Bienvenue sur Back in Time</h1>
+      <h2 class="text-center p-3 mb-4 mt-0">Un blog dédié aux voyages dans le temps !</h2>
+      <p class="mt-3 mb-1 mx-auto w-75-xl ">Si vous êtes passionné par l'idée de découvrir de nouvelles  époques, de rencontrer des personnages historiques et de vous immerger dans des lieux mythiques, vous êtes au bon endroit. Ici, nous vous proposons une exploration passionnante de l'univers du voyage temporel, avec des articles rédigés par des experts qui partagent avec vous leurs connaissances et leur passion.<br><br>
 
-      Mais surtout, nous vous proposons une sélection des meilleurs endroits et époques à visiter dans le passé, en
-      fonction de vos centres d'intérêt et de vos envies. Que vous rêviez de visiter l'Egypte antique, de rencontrer
-      Napoléon ou de découvrir les dinosaures, nous avons sélectionné pour vous les destinations les plus fascinantes et
-      les plus riches en découvertes. <br><br>
+      Notre blog couvre tous les aspects du voyage dans le temps, depuis les théories les plus fascinantes sur la nature du temps jusqu'aux techniques pratiques pour voyager dans le passé. Nous vous guidons pas à pas pour vous préparer à vos voyages, en vous donnant des astuces et en vous indiquant les pièges à éviter et profiter au maximum de chaque expérience. <br><br>
 
-      Alors n'hésitez plus, rejoignez notre communauté de voyageurs temporels et embarquez pour une aventure
-      extraordinaire à travers l'histoire et l'espace-temps ! <br><br>
-    </p>
+      Mais surtout, nous vous proposons une sélection des meilleurs endroits et époques à visiter dans le passé, en fonction de vos centres d'intérêt et de vos envies. Que vous rêviez de visiter l'Egypte antique, de rencontrer Napoléon ou de découvrir les dinosaures, nous avons sélectionné pour vous les destinations les plus fascinantes et les plus riches en découvertes. <br><br>
+
+      Alors n'hésitez plus, rejoignez notre communauté de voyageurs temporels et embarquez pour une aventure extraordinaire à travers l'histoire et l'espace-temps !
+      </p>
+   </div>
   </div>
-
 
   <div class="row border-bottom p-2 my-4">
     <h3 class="text-start py-2">Découvrez nos époques</h3>
@@ -39,7 +27,7 @@
 
   <div class="container categories mb-5  ">
 
-    <div class="row row-cols-1 row-cols-md-2 justify-content-center   row-cols-xl-3 g-4 mx-4">
+    <div class="row row-cols-1 row-cols-md-2 justify-content-center row-cols-xl-3 g-4 mx-4">
       {% for category in categories %}
       <div class="col">
         <a href="/category/show?id={{category.id}} ">
