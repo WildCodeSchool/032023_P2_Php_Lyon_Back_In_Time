@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg p-0">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/Accueil">
+            <img src="/assets/images/logo-without-text.png" alt="website logo" id="navbar-logo">
+            <img src="/assets/images/back-in-time-text.png" alt="back in time" id="navbar-text"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end fs-6" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                {% for category in categories %}
+                <li class="nav-item">
+                    <a class="nav-link active" href="/category/show?id={{category.id}} ">{{ category.name }}</a>
+                </li>
+                {% endfor %}
+
+                {% if session.admin is same as true %}
+                <li class="nav-item">
+                    <a class="nav-link active" href="/admin/management">PAGE ADMIN</a>
+                </li>
+                <li class="nav-item">
+                    <form action="" method="get">
+                        <button class="log-out-button nav-link active" type="submit" name="logOut" id="log-out">
+                            Se déconnecter
+                        </button>
+                    </form>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

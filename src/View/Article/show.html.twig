@@ -1,0 +1,66 @@
+{% extends 'layout.html.twig' %}
+{% block preload %}
+    {% for picture in pictures %}
+      <link rel="preload" as="image" href="{{ picture.url }}">
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid top-img p-0">
+  <img src="{{pixcategory.url}}" class="img-fluid mx-auto d-block" alt="category-picture">
+  <h2 class="text-img text-center p-3 w-50 mx-auto">{{ article.title }}</h2>
+</div>
+
+<div class="container">
+    <div class="row g-5">
+        <div class="col-md-9 ">
+
+            <div class="px-3 py-1 my-4">
+                <p>Date de publication : {{ article.date|date("d/m/Y") }}</p>
+                <p>{% autoescape %}{{ article.content|raw }} {% endautoescape %}</p>
+            </div>
+
+            <div id="carousel" class="carousel slide img-fluid w-75 p-3 mx-auto shadow-lg">
+              <div id="slider-wrapper"class="carousel-inner">
+                {% for picture in pictures %}
+                  <div class="carousel-item active">
+                    <img src="{{ picture.url }}" class="d-block w-100" alt="...">
+                  </div>
+                {% endfor %}
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+
+
+            <div class="row " > 
+              {% for picture in pictures %}
+                <div class=" p-2 col-lg-3 col-md-4 col-6">
+                  <img  role="button" src="{{ picture.url }}" class="img-fluid img-thumbnail shadow" onclick="showSlider()" alt="...">
+                </div>
+              {% endfor %}
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+            <div class="position-sticky">
+                <div class="p-4 my-4 rounded col" id="article-about-section">
+                    <h4 class="fst-italic">A propos de l'auteur</h4>
+                    <h5 class="pb-2">Auteur : {{ writer.firstname }}</h5>
+                    <p>{{ writer.presentation }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

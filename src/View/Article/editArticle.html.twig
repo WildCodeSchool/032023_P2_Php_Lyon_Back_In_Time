@@ -1,0 +1,71 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+
+<img src="\assets\images\redaction.jpg" class="img-fluid mx-auto d-block" alt="redaction">
+
+<div class="container w-75 p-2 my-5 shadow-lg rounded-2">
+
+    <ul class="bg-danger">
+        {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+
+    <form method="post" class="form">
+        <input type="hidden" value="{{ article.id }}" name="id">
+
+        <p class="p-2">
+            <label for="title" class="form-label font-weight-bold">Titre :</label>
+            <input type="text" name="title" id="title" class="form-control p-2" maxlength="29" value="{{article.title}}"
+                required>
+        </p>
+
+        <p class="p-2">
+            <label for="title" class="form-label font-weight-bold">Accroche :</label>
+            <input type="text" name="extract" id="extract" class="form-control p-2" maxlength="58"
+                value="{{article.extract}}" required>
+        </p>
+
+        <p class=" p-2">
+            <label for="content" class="form-label font-weight-bold">Contenu :</label>
+            <textarea type="text" name="content" id="mytextarea" class="form-control"
+                required>{{article.content}}</textarea>
+        </p>
+
+        <p class="p-2">
+            <label for="photo" class="form-label font-weight-bold">Lien photo :</label>
+            <input type="url" name="photo" id="photo" class="form-control" value="{{article.photo}}" required>
+        </p>
+
+        <p class="p-2">
+            <label for="category" class="form-label font-weight-bold">Epoque :</label>
+            <select name="category_id" id="category_id" required>
+                {% for category in categories %}
+                <option value="{{category.id}}">{{category.name}}</option>
+                {% endfor %}
+            </select>
+        </p>
+
+        <p class="p-2">
+            <label for="writer" class="form-label font-weight-bold">Auteur :</label>
+            <select name="writer_id" id="writer_id" required>
+                {% for writer in writers %}
+                <option value="{{writer.id}}">{{writer.firstname}}</option>
+                {% endfor %}
+            </select>
+        </p>
+
+        <p class="p-2">
+            <label for="date" class="form-label ">Date du jour :</label>
+            <input type="date" name="date" id="date" class="form-control" value="{{article.date}}" required>
+        </p>
+
+        <p class="p-2">
+            <input type="submit" value="Publier" class="form-control">
+        </p>
+    </form>
+    <a class="p-3 d-flex justify-content-center" href="/admin/management">Retour</a>
+</div>
+{% endblock %}

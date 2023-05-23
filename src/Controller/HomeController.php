@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Model\ArticleManager;
+use App\Model\CategoryManager;
+
 class HomeController extends AbstractController
 {
     /**
@@ -9,6 +12,11 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('Home/index.html.twig');
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->selectLastThreeArticles();
+
+        return $this->twig->render('Home/index.html.twig', [
+            'articles' => $articles,
+        ]);
     }
 }

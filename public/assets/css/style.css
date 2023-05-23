@@ -1,3 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;500;700&display=swap');
+
+:root {
+    --main-font: 'Jura', sans-serif;
+    --main-color: #E5D6CD;
+    --secondary-color : #C9A48C;
+}
+
 body {
-    color: #f76c6c;
+    font-family: var(--main-font);
+    min-height: 100vh;
+    position: relative;
+}
+
+/* navbar */
+
+.navbar {
+    background-color: var(--main-color);
+}
+
+#navbar-logo {
+    height: 50px;
+}
+
+#navbar-text {
+    height: 20px;
+}
+
+.log-out-button {
+    font-size: 100%;
+    border: 0;
+    background-color: var(--main-color);
+}
+
+#log-out:hover{
+    color: white;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    transition: all linear 0.2s;
+ }
+
+.nav-item{
+   font-weight: 700;
+}
+
+#navbarSupportedContent a:hover {
+   color: white;
+   border-radius: 5px;
+   background-color: var(--secondary-color);
+   transition: all linear 0.2s;
+}
+
+/* presentation */
+
+.welcome h1, .welcome h2{
+    font-family: 'Orbitron', sans-serif;
+    background-color:var(--main-color);
+
+}
+
+.card-body{
+    background-color: var(--main-color);
+    
+}
+
+#btn-home{
+    background-color: var(--secondary-color);
+    color:white;
+}
+
+#btn-home:hover{
+    background-color: var(--main-color);
+    color: black;
+}
+.categories a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+/* footer */
+
+#footer{
+    background-color:var(--main-color);
+}
+
+.logoFooter{
+    width: 24px;
+    height: 24px;
+}
+
+#logof{
+    width: 40px; 
+    height: 40px;
+}
+
+/* article pages */
+
+#article-about-section {
+    background-color: var(--main-color);
+}
+
+#article-about-section p {
+    margin: 0rem;
+}
+
+.primary-link a {
+    color: var(--secondary-color);
+}
+
+.top-img {
+    position: relative;
+} 
+
+.text-img{
+    position: absolute;
+    top: 50%;
+    left: 50%;  
+    transform: translate(-50%, -50%);
+    background-color: rgba(229,214,205,0.8);
+    border-radius: 5px;
+}
+
+/* to stick the right section off the article page */
+.position-sticky {
+    top: 2rem;
+}
+
+#carousel {
+
+    display: none;
+  }
+
+  
+  #slider-wrapper img {
+    display: none;
+  }
+  
+  #slider-wrapper img.active {
+    display: block;
+  }
+/* style for every form */
+
+.submit-button {
+    width: 20vw;
+}
+
+.form {
+    background-color: var(--main-color);
+}
+
+.link-unstyled, .link-unstyled:link, .link-unstyled:hover {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+/* Admin management page */
+.btn-management {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color:unset;
+}
+
+.btn-management:hover {
+    background-color: var(--main-color);
+    color: white;
+    border-color:unset;
 }

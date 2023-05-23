@@ -1,6 +1,78 @@
 {% extends 'layout.html.twig' %}
-
 {% block content %}
-    <h1>Hello Wilder !</h1>
-    <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
+
+
+<img src="\assets\images\dolorean.jpg" class="img-fluid mx-auto d-block" alt="dolorean">
+
+<div class="container ">
+
+  <div class="row welcome p-5 mx-auto ">
+    <div class="col-xl-10 mx-auto">
+      <h1 class="text-center p-3 mb-0">Bienvenue sur Back in Time</h1>
+      <h2 class="text-center p-3 mb-4 mt-0">Un blog dédié aux voyages dans le temps !</h2>
+      <p class="mt-3 mb-1 mx-auto w-75-xl ">Si vous êtes passionné par l'idée de découvrir de nouvelles  époques, de rencontrer des personnages historiques et de vous immerger dans des lieux mythiques, vous êtes au bon endroit. Ici, nous vous proposons une exploration passionnante de l'univers du voyage temporel, avec des articles rédigés par des experts qui partagent avec vous leurs connaissances et leur passion.<br><br>
+
+      Notre blog couvre tous les aspects du voyage dans le temps, depuis les théories les plus fascinantes sur la nature du temps jusqu'aux techniques pratiques pour voyager dans le passé. Nous vous guidons pas à pas pour vous préparer à vos voyages, en vous donnant des astuces et en vous indiquant les pièges à éviter et profiter au maximum de chaque expérience. <br><br>
+
+      Mais surtout, nous vous proposons une sélection des meilleurs endroits et époques à visiter dans le passé, en fonction de vos centres d'intérêt et de vos envies. Que vous rêviez de visiter l'Egypte antique, de rencontrer Napoléon ou de découvrir les dinosaures, nous avons sélectionné pour vous les destinations les plus fascinantes et les plus riches en découvertes. <br><br>
+
+      Alors n'hésitez plus, rejoignez notre communauté de voyageurs temporels et embarquez pour une aventure extraordinaire à travers l'histoire et l'espace-temps !
+      </p>
+   </div>
+  </div>
+
+  <div class="row border-bottom p-2 my-4">
+    <h3 class="text-start py-2">Découvrez nos époques</h3>
+  </div>
+
+  <div class="container categories mb-5  ">
+
+    <div class="row row-cols-1 row-cols-md-2 justify-content-center row-cols-xl-3 g-4 mx-4">
+      {% for category in categories %}
+      <div class="col">
+        <a href="/category/show?id={{category.id}} ">
+          <div class="card shadow-lg p-2">
+            <img src="{{category.url}}" class="card-img-top h-50" alt="article-illustration">
+            <div class="card-body">
+              <h5 class="card-title text-center mt-1">{{ category.name }}</h5>
+            </div>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<div class="row border-bottom p-2 my-4">
+  <h3 class="text-start py-2">Nos derniers articles</h3>
+</div>
+
+<div class="container latest-articles mb-5  ">
+
+  <div class="row row-cols-1 row-cols-md-2 justify-content-center row-cols-xl-3 g-4 mx-4">
+    {% for article in articles %}
+    <div class="col">
+      <div class="card h-100 shadow-lg p-2">
+        <img src="{{ article.photo }}" class="card-img-top h-50" alt="article-illustration">
+        <div class="card-body">
+          <h5 class="card-title">{{ article.title }}</h5>
+          <p class="card-text fs-6 fw-light">{{ article.extract}}</p>
+          <h6 class="fst-italic fw-light">Par {{ article.firstname }}</h6>
+        </div>
+        <div class="card-footer">
+          <a href="/articles/show?id={{ article.article_id }}" class="btn btn-sm m-0" id="btn-home">Voir plus</a>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <ul>
+      <li>Rien à afficher</li>
+    </ul>
+    {% endfor %}
+  </div>
+
+</div>
+
+</div>
 {% endblock %}

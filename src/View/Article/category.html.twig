@@ -1,0 +1,40 @@
+{% extends "layout.html.twig" %}
+
+
+{% block content %}
+
+<div class="container-fluid top-img p-0">
+  <img src="{{ category.url }}" class="img-fluid mx-auto d-block" alt="category-picture">
+  <h2 class="text-img text-center p-3 w-25 mx-auto">{{ category.name }}</h2>
+</div>
+
+<div class="container latest-articles my-5  ">
+
+  <div class="row row-cols-1 row-cols-md-2 justify-content-center row-cols-xl-3 g-4 mx-4">
+    {% for article in articles %}
+    <div class="col">
+      <div class="card h-100 shadow-lg p-2">
+        <img src="{{ article.photo }}" class="card-img-top h-50" alt="article-illustration">
+        <div class="card-body">
+          <h5 class="card-title">{{ article.title }}</h5>
+          <p class="card-text fs-6 fw-light ">{{ article.extract}}
+          </p>
+          <h6 class="fst-italic fw-light">Par {{ article.firstname }}</h6>
+        </div>
+        <div class="card-footer">
+          <a href="/articles/show?id={{article.articleId}}" class="btn btn-sm m-0" id="btn-home">Voir plus</a>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <ul>
+      <li>Rien à afficher</li>
+    </ul>
+    {% endfor %}
+  </div>
+
+</div>
+
+</div>
+
+{% endblock %}
